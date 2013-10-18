@@ -1,0 +1,14 @@
+.searchPane{
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+#formPane{
+	margin-top: 20px;
+}
+
+.myInput{
+	height: 34px;
+	padding:0px;
+	font-size: 1.2em;
+}
