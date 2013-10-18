@@ -11,3 +11,12 @@
 .mainPane{
 	margin-top: 30px;
 }
+
+.alignCenter{
+	text-align: center;
+}
+
+#pointNumber{
+	margin-top: 20px;
+	font-size: 2em;
+}
