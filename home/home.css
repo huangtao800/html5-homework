@@ -20,3 +20,15 @@
 	margin-top: 20px;
 	font-size: 2em;
 }
+
+.rowStyle{
+	margin-top: 10px; 
+}
+
+td{
+	height: 30px;
+}
+
+.firstCol{
+	width: 150px;
+}
