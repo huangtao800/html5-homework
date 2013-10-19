@@ -27,6 +27,11 @@
 
 td{
 	height: 30px;
+	padding-top: 10px;
+}
+
+.profile{
+	margin-top: 20px;
 }
 
 .firstCol{
