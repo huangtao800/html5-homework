@@ -6,3 +6,20 @@
 	padding:10px;
 	background-color:#F0EDEE;
 }
+
+#tags{
+	margin-top:10px;
+}
+
+.tagLink{
+	color:white;
+}
+
+.answerDiv{
+	margin-top:50px;
+}
+
+.peopelDiv{
+	text-align:right;
+	margin-top:10px;
+}
