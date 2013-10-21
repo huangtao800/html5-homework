@@ -12,6 +12,8 @@
   	<link rel="stylesheet" href="search.css">
   	<link rel="stylesheet" href="../askQ/ask.css">
     <link rel="stylesheet" href="../askQ/question.css">
+    
+    
 </head>
 
 <body>
@@ -78,22 +80,37 @@
         </div>
         
         <div class="answerDiv">
+       
         	<table>
-            	<tr>
-                	<table>
+            	<tr><td class="rateTD">
+                	<table class="rateTable">
                     	<tr>
-                        	<td><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-chevron-up"></span></button></td>
+                        	<td class="centerTD">
+                            	<button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on left"><span class="glyphicon glyphicon-chevron-up"></span></button>
+                               </td>
                         </tr>
+                        <tr><td class="centerTD"><h3>5</h3></td></tr>
+                        
                         <tr>
-                        	<td><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
+                        	<td class="centerTD"><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-chevron-down"></span></button></td>
                         </tr>
-                    </table>
+                    </table></td>
+                    
+                    <td valign="top">
+                    	<div class="answerContent">
+                        	<p>asdfjkajsdfj asdfasdf e</p>
+                        </div>
+                    </td>
                 </tr>
             </table>
-        </div>
-    </div>
+        </div><!end answerDiv>
+        
+        
+  
+    </div><!end container>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../dist/js/bootstrap.js"></script>
-
+    <script src="../askQ/question.js"></script>
+	
 </body>
 </html>

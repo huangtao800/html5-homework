@@ -19,7 +19,23 @@
 	margin-top:50px;
 }
 
+.answerContent{
+	background-color:#F0EDEE;
+	padding:10px;
+}
+
 .peopelDiv{
 	text-align:right;
 	margin-top:10px;
+}
+
+.rateTD{
+	width:60px;
+}
+.rateTable{
+	width:60px;
+}
+
+.centerTD{
+	text-align:center;
 }
