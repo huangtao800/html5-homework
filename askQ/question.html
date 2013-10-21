@@ -9,7 +9,8 @@
 	<link href="../dist/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="../css/register.css">
 	<link rel="stylesheet" href="../home/home.css">
-  <link rel="stylesheet" href="search.css">
+  	<link rel="stylesheet" href="search.css">
+  	<link rel="stylesheet" href="../askQ/ask.css">
 </head>
 
 <body>
@@ -56,25 +57,52 @@
 
 
     <div class="container mainPane">
-      <div class="row">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Title</h3>
-          </div>
+		<div>
+        	<h2>How to write HTML</h2>
+        	<table>
+            <tr>
+              <td class="firstCol labelTD"><h2>Title</h2>
+              <td><h2>How to write HTML</h2></td>
+            </tr>
 
-          <div class="panel-body">
-          </div>
+            <tr>
+              <td class="firstCol labelTD"></td>
+              <td>
+                <textarea type="text" class="form-control" id="description" rows=10></textarea>
+              </td>
+            </tr>
 
-          <div class="panel-heading">
-            <h3 class="panel-title">Description</h3>
-          </div>
+            <tr>
+              <td class="firstCol labelTD"><label for="tag">Tags</label></td>
+              <td><input type="text" class="form-control" id="tag"></td>
+            </tr>
 
-          <div class="panel-body">
 
-          </div>
-        </div>
-      </div><!row end>
+            <tr>
+              <td class="firstCol labelTD"><label for="fileChooser">上传文件</label></td>
+              <td><input type="file" class="form-control" id="fileChooser"></td>
+            </tr>
+            
+            <tr>
+            	<td class="firstCol labelTD"><label for="coinChooser">悬赏分值</label></td>
+                <td><select id="coinChooser" class="form-control">
+                		<option value="0" selected="selected">0</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                	</select>
+                </td>
+            </tr>
 
+            <tr>
+              <td></td>
+              <td id="submitTD">
+                <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+              </td>
+            </tr>
+          </table> 
+        </div>	
     </div>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../dist/js/bootstrap.js"></script>
