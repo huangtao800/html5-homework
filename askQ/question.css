@@ -8,7 +8,7 @@
 }
 
 .tags{
-	margin:10px;
+	margin-top:10px;
 }
 
 .tagLink{
@@ -51,6 +51,10 @@ h3{
 	margin-top:10px;
 }
 
+.peopleDiv{
+	background-color: #e0eaf1;
+	padding:10px;
+}
 
 .centerDiv{
 	text-align: center;
@@ -62,4 +66,8 @@ h3{
 
 .score{
 	font-size: 1.2em;
+}
+
+textarea{
+	margin-bottom: 20px;
 }
