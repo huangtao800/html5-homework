@@ -60,17 +60,20 @@
 
 
     <div class="container mainPane">
-		<div id="title">
+		<div class="title">
         	<h2>How to write HTML</h2>
         </div>
         
-        <div id="description">
+        <div class="description">
         	<p>How to write HTML How to write HTMLHow to write HTMLHow to write HTMLHow to write HTMLHow to write HTML
             How to write HTMLHow to write HTMLHow to write HTMLHow to write HTML</p>
         </div>
         
-        <div id="tags">
+        <div class="auxiDiv"></div>
+
+        <div class="tags">
         	<span class="label label-info"><a href="#" class="tagLink">C++</a></span>
+            <span class="label label-info"><a href="#" class="tagLink">HTML</a></span>
         </div>
         
         <div class="rightDiv">
@@ -137,7 +140,7 @@
 
                     <div class="row centerDiv">
                         
-                            <button type="button" class="btn btn-default tipsLeft" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="I don't think so..." ><span class="glyphicon glyphicon-chevron-down"></span></button>
+                            <button type="button" class="btn btn-default tipsLeft" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="I don't think so." ><span class="glyphicon glyphicon-chevron-down"></span></button>
                         
                     </div>
                 </div>
@@ -159,8 +162,13 @@
 
         </div><!--end answerDiv-->
 
-        <div class="yourAnswerDiv">
-            <h2>Your Answer</h2>
+        <div>
+            <h3>Your Answer</h3>
+            <div class="yourAnswerDiv">
+                <form>
+                    <textarea type="text" class="form-control" row=10></textarea>
+                </form>
+            </div>
         </div>
         
   
