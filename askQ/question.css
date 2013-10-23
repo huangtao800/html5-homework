@@ -16,7 +16,17 @@
 }
 
 .answerItemDiv,.yourAnswerDiv{
+	padding-top:10px; 
 	margin-top:50px;
+}
+
+.answerItemDiv{
+	border-color: #ccc;
+	border-style: solid;
+	border-width: 1px;
+	border-right: 0px;
+	border-left: 0px;
+	border-bottom: 0px;
 }
 
 .answerContent{
