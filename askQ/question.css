@@ -44,6 +44,7 @@ h3{
 .answerContent{
 	background-color:#F0EDEE;
 	padding:10px;
+	margin-bottom: 20px;
 }
 
 .rightDiv{
@@ -60,7 +61,7 @@ h3{
 	text-align: center;
 }
 
-.btn{
+.noBorderBtn{
 	border-style:none;
 }
 
