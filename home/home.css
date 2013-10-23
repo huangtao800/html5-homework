@@ -11,6 +11,9 @@
 .mainPane{
 	padding-bottom: 80px;
 }
+.container{
+	max-width: 1050px;
+}
 
 .alignCenter{
 	text-align: center;
