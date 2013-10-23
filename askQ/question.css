@@ -15,7 +15,7 @@
 	color:white;
 }
 
-.answerDiv{
+.answerItemDiv,.yourAnswerDiv{
 	margin-top:50px;
 }
 
@@ -24,18 +24,20 @@
 	padding:10px;
 }
 
-.peopelDiv{
+.rightDiv{
 	text-align:right;
 	margin-top:10px;
 }
 
-.rateTD{
-	width:60px;
-}
-.rateTable{
-	width:60px;
+
+.centerDiv{
+	text-align: center;
 }
 
-.centerTD{
-	text-align:center;
+.btn{
+	border-style:none;
+}
+
+.score{
+	font-size: 1.2em;
 }

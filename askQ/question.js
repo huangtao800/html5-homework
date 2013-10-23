@@ -1,2 +1,3 @@
 // JavaScript Document
 
+$('.tipsLeft').tooltip();
