@@ -29,87 +29,77 @@
 
         <div class="navbar-collapse collapse myNavBar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="../askQ/tagList.html">Tags</a></li>
           </ul>
+
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+
           <ul class="nav navbar-nav navbar-right">
-            <li></li>
-            <li class="active"><a href="./">Static top</a></li>
-            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+            <li><a href="../home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
-    </div>
+    </div><!--navibar ends-->
 
 
 
     <div class="container mainPane">
-      <form>
-        <div id="titleDiv">
-          <table>
-            <tr>
-              <td class="firstCol labelTD"><label for="title">Title</label>
-              <td><input type="text" id="title" class="form-control"></td>
-            </tr>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-7">
+            <input type="text" id="title" class="form-control">
+          </div>
+        </div>
 
-            <tr>
-              <td class="firstCol labelTD"><label for="description">Description<label></td>
-              <td>
-                <textarea type="text" class="form-control" id="description" rows=10></textarea>
-              </td>
-            </tr>
+        <div class="form-group">
+          <label for="description" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-7">
+            <textarea type="text" class="form-control" id="description" rows=10></textarea>
+          </div>
+        </div>
 
-            <tr>
-              <td class="firstCol labelTD"><label for="tag">Tags</label></td>
-              <td><input type="text" class="form-control" id="tag"></td>
-            </tr>
+        <div class="form-group">
+          <label for="tag" class="col-sm-2 control-label">Tags</label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control" id="tag">
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label for="file" class="col-sm-2 control-label">上传文件</label>
+          <div class="col-sm-7">
+            <input type="file" class="form-control" id="fileChooser">
+          </div>
+        </div>
 
-            <tr>
-              <td class="firstCol labelTD"><label for="fileChooser">上传文件</label></td>
-              <td><input type="file" class="form-control" id="fileChooser"></td>
-            </tr>
-            
-            <tr>
-            	<td class="firstCol labelTD"><label for="coinChooser">悬赏分值</label></td>
-                <td><select id="coinChooser" class="form-control">
-                		<option value="0" selected="selected">0</option>
+        <div class="form-group">
+          <label for="coinChooser" class="col-sm-2 control-label">悬赏分值</label>
+          <div class="col-sm-7">
+            <select id="coinChooser" class="form-control">
+                    <option value="0" selected="selected">0</option>
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
                         <option value="20">20</option>
-                	</select>
-                </td>
-            </tr>
+            </select>
+          </div>
+        </div>
 
-            <tr>
-              <td></td>
-              <td id="submitTD">
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
-              </td>
-            </tr>
-          </table> 
-        </div><!end titleDiv>
-       
-      </form>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-7">
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Submit</button>
+          </div>
+        </div>
+      </form> 
       
-      
-      
-      
-    </div><!container end>
+    </div><!--container end-->
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../dist/js/bootstrap.min.js"></script>
 
