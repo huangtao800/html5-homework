@@ -1,17 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-.right{
-	position: absolute;
-	width: 300px;
-	top: 100px;
-	right: 250px;
-}
-
-.left{
-	position: absolute;
-	top:100px;
-	left: 100px;
-}
 
 .component{
 	margin-top: 5px;
@@ -22,11 +10,11 @@
 	height: 500px;
 }
 
+.logPane{
+	margin-top: 100px;
+}
 
 #registerLink{
 	margin-top: 30px; 
 }
 
-a{
-	font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, "sans-serif"
-}

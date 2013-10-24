@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/common.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -24,43 +25,78 @@
 
   <body>
 
-    <div class="container">
+    <div class="container logPane">
+      <div class="row">
+        <div class="col-sm-7">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
 
-      <div class="left">
-        <img src="login.jpg" id="loginImg">
-      </div>
-
-      <div class="right">
-
-        <form class="form-signin">
-          <img src="logo.png" id="logoImg" />
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <div class="component">
-          <input type="text" class="form-control" placeholder="Email address" required autofocus>
-        </div>
-        <div class="component">
-          <input type="password" class="form-control" placeholder="Password" required>
-        </div>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../img/five.jpg" alt="..." class="loop">
+                <div class="carousel-caption">
         
-        <label class="checkbox">
-        <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-      <p id="registerLink">
-        <a href="../register/register.html">还没有账号？现在注册！</a>
-      </p>
-      
+                </div>
+              </div>
 
+              <div class="item">
+                <img src="../img/five.jpg" alt="..." class="loop">
+                <div class="carousel-caption">
+        
+                </div>
+              </div>
+
+              <div class="item">
+                <img src="../img/five.jpg" alt="..." class="loop">
+                <div class="carousel-caption">
+        
+                </div>
+              </div>
+    
+            </div>
+
+        </div>
       </div>
 
 
+        <div class="col-sm-4">
+            <form class="form-signin">
+              <img src="logo.png" id="logoImg" />
+              <h2 class="form-signin-heading">Please sign in</h2>
+              <div class="component">
+                <input type="text" class="form-control" placeholder="Email address" required autofocus>
+              </div>
+              <div class="component">
+                <input type="password" class="form-control" placeholder="Password" required>
+              </div>
+        
+              <label class="checkbox">
+                <input type="checkbox" value="remember-me"> Remember me
+              </label>
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+            <p id="registerLink">
+              <a href="../register/register.html">还没有账号？现在注册！</a>
+            </p>
+        </div>
+
+      </div>
 
     </div> <!-- /container -->
+
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../login/login.js"></script>
   </body>
 </html>
