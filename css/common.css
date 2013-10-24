@@ -1,0 +1,12 @@
+.centerDiv{
+	text-align: center;
+}
+
+.rightDiv{
+	text-align:right;
+	margin-top:10px;
+}
+
+.noBorderBtn{
+	border-style:none;
+}
