@@ -15,17 +15,10 @@
 	max-width: 1050px;
 }
 
-.alignCenter{
-	text-align: center;
-}
 
 #pointNumber{
-	margin-top: 20px;
-	font-size: 2em;
-}
-
-.rowStyle{
-	margin-top: 10px; 
+	margin-top: 10px;
+	font-size: 1.2em;
 }
 
 td{
@@ -35,8 +28,13 @@ td{
 
 .profile{
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .firstCol{
 	width: 150px;
+}
+
+.rowTD{
+	margin-top: 20px;
 }
