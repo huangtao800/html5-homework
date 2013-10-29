@@ -11,6 +11,11 @@
 	border-style:none;
 }
 
+.navbarForm{
+	width: 400px;
+	margin-left: 20px;
+}
+
 body{
 	font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, "sans-serif"
 }
