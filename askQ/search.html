@@ -12,8 +12,8 @@
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../iCheck/skins/square/blue.css">
 <link rel="stylesheet" href="search.css">
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
-<script src="../iCheck/skins/jquery.icheck.js"></script>
+<script src="../jquery-1.10.2.min.js"></script> 
+<script src="../iCheck/jquery.icheck.js"></script>
 </head>
 
 <body>
@@ -77,12 +77,19 @@
         </div>
 
 
-        <div class="form-group">
-          
-            <input type="radio" id="chooseQuestion" name="iCheck">
-            <label for="chooseQuestion">Questions</label>
-            
+        <div class="row">
+          <div class="col-md-1 radioDiv">
+            <input type="radio" name="iCheck" id="chooseQuestion" checked>
+          </div> 
+          <div class="col-md-2">
+            <label for="chooseQuestion">Question</label>
+          </div>
+          <div class="col-md-1 radioDiv">
+            <input type="radio" name="iCheck" id="chooseUser">
+          </div>
+          <div class="col-md-2"><label for="chooseUser">User</label></div>
         </div>
+
 
       </form>
     </div>
@@ -97,7 +104,8 @@
 </div>
 <!--container end--> 
 
-<script src="../dist/js/bootstrap.min.js"></script> 
 <script src="../askQ/search.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script> 
+
 </body>
 </html>
