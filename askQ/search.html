@@ -1,94 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>AsQ</title>
-	<link href="../dist/css/bootstrap.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/common.css">
-	<link rel="stylesheet" href="../css/register.css">
-	<link rel="stylesheet" href="../home/home.css">
-  <link rel="stylesheet" href="../css/common.css">
-  <link rel="stylesheet" href="search.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AsQ</title>
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/register.css">
+<link rel="stylesheet" href="../home/home.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../iCheck/skins/square/blue.css">
+<link rel="stylesheet" href="search.css">
+<script src="../iCheck/skins/jquery.iCheck.js"></script>
 </head>
 
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../askQ/search.html"><img src="../home/logoIcon.png" class="logoIcon" ></a>
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header"> <a href="../askQ/search.html"><img src="../home/logoIcon.png" class="logoIcon" ></a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+    </div>
+    <div class="navbar-collapse collapse myNavBar">
+      <ul class="nav navbar-nav">
+        <li><a href="../askQ/tagList.html">Tags</a></li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control navbarForm" placeholder="Search">
         </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="../home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</div>
+<!--navibar ends-->
 
-        <div class="navbar-collapse collapse myNavBar">
-          <ul class="nav navbar-nav">
-            <li><a href="../askQ/tagList.html">Tags</a></li>
-          </ul>
+<div class="container mainPane">
+  <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-3"> <img src="../login/logo.png"> </div>
+    <div class="col-md-4"></div>
+  </div>
 
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control navbarForm" placeholder="Search">
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li><a href="../askQ/tagList.html">Tags</a></li>
+        <li><a href="">Unanswered</a></li>
+        <li><a href="../askQ/ask.html">I want to Ask</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <form id="formPane">
+
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-9">
+              <input type="text" class="form-control">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div><!--navibar ends-->
-
-
-
-    <div class="container mainPane">
-      
-        <div class="row">
-          <div class="col-md-5"></div>
-          <div class="col-md-3">
-            <img src="../login/logo.png">
+            <div class="col-md-3">
+              <button class="btn btn-lg btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+            </div>
           </div>
-          <div class="col-md-4"></div>
         </div>
-      
 
 
-      
-        <div class="row">
+        <div class="form-group">
           
-          <div class="col-md-12">
-        <ul class="nav nav-tabs">
-          <li><a href="../askQ/tagList.html">Tags</a></li>
-          <li><a href="">Unanswered</a></li>
-          <li><a href="../askQ/ask.html">I want to Ask</a></li>
-          </ul>
-          </div>
+            <input type="radio" id="chooseQuestion" name="iCheck">
+            <label for="chooseQuestion">Questions</label>
           
         </div>
-      
-      <div class="row">
-        
-        <form id="formPane">
-          <div class="form-group">
-            <div class="col-md-9"><input type="text" class="form-control"></div>
-            <div class="col-md-3"><button class="btn btn-lg btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button></div>
-          
-          </div>
-        </form>
+
+      </form>
+    </div>
+  </div>
+  <div class="hotQuestion">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Hot Questions</h2>
       </div>
-
-      
-    </div><!--container end-->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>
-
+    </div>
+  </div>
+</div>
+<!--container end--> 
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
+<script src="../dist/js/bootstrap.min.js"></script> 
+<script src="../askQ/search.js"></script>
 </body>
 </html>
