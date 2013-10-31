@@ -2,6 +2,7 @@
 	height: 200px;
 	background-color: #aebddd;
 	padding:5px;
+	padding-top: 10px;
 	overflow: hidden;
 	line-height: 1em;
 }

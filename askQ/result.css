@@ -1,8 +1,19 @@
-.questionItem{
-	margin-top: 20px;
-	padding-left: 20px;
-}
-
 .resultList{
 	margin-top:30px;
+}
+
+.questionItem{
+	height: 100px;
+	
+	padding:5px 10px;
+	border-style: solid;
+	border-color: #eaeaea;
+	border-width: 1px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+}
+
+.description{
+	overflow: hidden;
 }

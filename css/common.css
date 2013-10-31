@@ -35,3 +35,7 @@ body{
 .tagLink:hover{
 	color:#8ad1f2;
 }
+
+#askButton{
+	margin-left: 5px;
+}
