@@ -1,6 +1,6 @@
 .tagTD{
 	height: 200px;
-	background-color: #eee;
+	background-color: #aebddd;
 	padding:5px;
 	overflow: hidden;
 	line-height: 1em;
@@ -18,4 +18,8 @@
 	border-left: 0px;
 	border-right: 0px;
 	border-color: #ccc;
+}
+
+.tagList p{
+	margin-top: 10px;
 }

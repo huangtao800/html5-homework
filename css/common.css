@@ -19,3 +19,19 @@
 body{
 	font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, "sans-serif"
 }
+
+.tags{
+	margin-top:10px;
+}
+
+.labelTag{
+	background-color: #5b7e84;
+}
+
+.tagLink{
+	color:white;
+}
+
+.tagLink:hover{
+	color:#8ad1f2;
+}

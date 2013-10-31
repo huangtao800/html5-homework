@@ -22,13 +22,14 @@
 
 .hotQuestionItem{
 	height: 100px;
-	background-color: #ffefc6;
+	background-color: #dddfbe;
 	padding:5px 10px;
 	border-style: solid;
 	border-color: #eaeaea;
 	border-width: 1px;
 	border-left: 0px;
 	border-right: 0px;
+	border-bottom: 0px;
 }
 
 .answerCountTD{
@@ -42,4 +43,9 @@
 
 .questionTD{
 	padding-left: 15px;
+}
+
+.userTD{
+	text-align: right;
+	vertical-align: bottom;
 }
