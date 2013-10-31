@@ -55,3 +55,9 @@ h3{
 textarea{
 	margin-bottom: 20px;
 }
+
+
+.uploadImg{
+	max-width: 100%;
+	margin:20px;
+}
