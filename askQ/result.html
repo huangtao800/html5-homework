@@ -11,8 +11,10 @@
   <link rel="stylesheet" href="../home/home.css">
   <link rel="stylesheet" href="../askQ/result.css">
   <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../iCheck/skins/square/blue.css">
+  <link rel="stylesheet" href="../askQ/userResult.css">
 
-  <script src="../js/common.js"></script>
+  
 </head>
 
 <body>
@@ -62,11 +64,26 @@
         <div class="col-md-12">
           <form role="form" id="formPane">
             <div class="form-group">
-              <div class="col-md-9"><input type="text" class="form-control"></div>
-              <div class="col-md-3"><button class="btn btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button></div>
-          
+              <div class="row">
+                <div class="col-md-9"><input type="text" class="form-control"></div>
+                <div class="col-md-3"><button class="btn btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button></div>
+              </div>          
             </div>
+
+            <div class="row">
+              <div class="col-md-1 radioDiv">
+                <input type="radio" name="iCheck" id="chooseQuestion" checked>
+              </div> 
+              <div class="col-md-2">
+                <label for="chooseQuestion">Question</label>
+              </div>
+              <div class="col-md-1 radioDiv">
+                <input type="radio" name="iCheck" id="chooseUser">
+              </div>
+              <div class="col-md-2"><label for="chooseUser">User</label></div>
+            </div>            
           </form>
+
         </div>
       </div>
 
@@ -245,6 +262,9 @@
     </div><!--container ends-->
     
     <script src="../jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../iCheck/jquery.icheck.js"></script> 
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../askQ/search.js"></script>
+    <script src="../js/common.js"></script>
 </body>
 </html>
