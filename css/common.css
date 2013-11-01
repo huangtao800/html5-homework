@@ -39,3 +39,22 @@ body{
 #askButton{
 	margin-left: 5px;
 }
+
+.answerCountTD{
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.answerCount{
+	font-size: 1.3em;
+}
+
+.questionTD{
+	padding-left: 15px;
+}
+
+.userTD{
+	text-align: right;
+	vertical-align: bottom;
+}

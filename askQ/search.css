@@ -22,7 +22,7 @@
 
 .hotQuestionItem{
 	height: 100px;
-	background-color: #dddfbe;
+	background-color: white;
 	padding:5px 10px;
 	border-style: solid;
 	border-color: #eaeaea;
@@ -32,21 +32,3 @@
 	border-bottom: 0px;
 }
 
-.answerCountTD{
-	vertical-align: middle;
-	text-align: center;
-	padding-top: 20px;
-}
-
-.answerCount{
-	font-size: 1.3em;
-}
-
-.questionTD{
-	padding-left: 15px;
-}
-
-.userTD{
-	text-align: right;
-	vertical-align: bottom;
-}

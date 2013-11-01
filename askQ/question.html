@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="../css/common.css">
   	<link rel="stylesheet" href="../askQ/ask.css">
     <link rel="stylesheet" href="../askQ/question.css">
-    <script src="../js/common.js"></script>
+    <link href="../Font-Awesome-3.0.2/css/font-awesome.css" rel="stylesheet">
+    
     
 </head>
 
@@ -41,12 +42,12 @@
             <div class="form-group">
               <input type="text" class="form-control navbarForm" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Search</button>
           </form>
 
           <div class="navbar-form navbar-right">
             <div class="form-group">
-              <button class="btn btn-md btn-default" onclick="askQuestion()" id="askButton">Ask Question</button>
+              <button class="btn btn-md btn-default" id="askButton">Ask Question</button>
             </div>
           </div>
 
@@ -185,16 +186,38 @@
             <h3>Your Answer</h3>
             <div class="yourAnswerDiv">
                 <form>
-                    <textarea type="text" class="form-control" rows=10></textarea>
+                    <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            </ul>
+                        </div>
+
+                        <div class="btn-group">
+                            <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
+                            <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                        </div>
+
+                        <div class="btn-group">
+                            <a class="btn" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><i class="icon-undo"></i></a>
+                            <a class="btn" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><i class="icon-repeat"></i></a>
+                        </div>
+                    </div>
+                    <div id="editor"></div>                    
                     <button type="submit" class="btn btn-lg btn-primary">Submit your answer</button>
                 </form>
             </div>
         </div>
+
+
         
   
     </div><!--end container-->
     <script src="../jquery-1.10.2.min.js"></script>
+    <script src="../js/jquery.hotkeys.js"></script>
     <script src="../dist/js/bootstrap.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/inputEditor.js"></script>
     <script src="../askQ/question.js"></script>
 	
 </body>
