@@ -1,8 +1,39 @@
 .userItem{
+	vertical-align: middle;
+	padding: 5px;
+	border-style: solid;
+	border-color: #eaeaea;
+	border-width: 1px;
+	border-width: 1px;
+	border-bottom: 0px;
+	border-left: 0px;
+	border-right: 0px;
+}
+
+.userImgDiv{
 	height: 100px;
-	background-color: #ccc;
+	line-height: 100px;
 }
 
 .radioRaw{
 	margin-top: 20px;
+}
+
+.userImg{
+	max-width: 80px;
+	max-height: 80px;
+}
+
+.userInfo{
+	padding: 6px;
+	overflow: hidden;
+}
+
+.userNameLink{
+	color: #666;
+	font-size: 1.4em;
+}
+
+.QA{
+	padding-left: 22px;
 }
