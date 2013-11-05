@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="../askQ/result.css">
   <link rel="stylesheet" href="../css/common.css">
 
-  <script src="../js/common.js"></script>
 </head>
 
 <body>
@@ -44,12 +43,17 @@
 
           <div class="navbar-form navbar-right">
             <div class="form-group">
-              <button class="btn btn-md btn-default" onclick="askQuestion()" id="askButton">Ask Question</button>
+              <button class="btn btn-md btn-default" id="askButton">Ask Question</button>
             </div>
           </div>
 
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="../home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
+            <li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../home/HomePage.html">Home</a></li>
+                <li><a href="../home/HomePage.html">Sign out</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -158,6 +162,7 @@
     </div>
     
     <script src="../jquery-1.10.2.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
 </body>
 </html>
