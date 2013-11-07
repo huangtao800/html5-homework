@@ -1,3 +1,11 @@
+<?php 
+if(isset($_COOKIE['id'])){
+  $name=$_COOKIE['name'];
+}else{
+  print ("<script>alert('no cookie')</script>");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,7 +99,7 @@
                 </tr>
                 <tr>
                   <td class="firstCol">User Name</td>
-                  <td>Tao Huang</td>
+                  <td><?php print "$name"?></td>
                 </tr>
               </table>
           </div>
