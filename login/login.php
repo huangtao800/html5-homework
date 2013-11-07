@@ -15,9 +15,12 @@ if(isset($_POST['submitted'])){
 		$row=mysqli_fetch_assoc($result);
 		$name=$row['name'];
 		$id=$row['id'];
-		setcookie('name',$name,time()+86400);
-		setcookie('id',$id,time()+86400);
-		print ("<script>window.location.href='../home/HomePage.php'</script>");
+    
+		setcookie('name',"huangtao",time()+86400,'/');
+		setcookie('id',$id,time()+86400,'/');
+
+		header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/home/HomePage.php');
+    exit();
 
 	}else{
 		$isPasswordWrong=TRUE;

@@ -1,8 +1,6 @@
 <?php 
 if(isset($_COOKIE['id'])){
   $name=$_COOKIE['name'];
-}else{
-  print ("<script>alert('no cookie')</script>");
 }
 ?>
 
