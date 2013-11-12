@@ -26,7 +26,7 @@ if(isset($_COOKIE['id'])){
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../index.html"><img src="../home/logoIcon.png" class="logoIcon" ></a>
+          <a href="../index.php"><img src="../home/logoIcon.png" class="logoIcon" ></a>
           
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
