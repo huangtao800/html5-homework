@@ -1,6 +1,7 @@
 <?php
-function getUserNameByID($userID){
-	$query="SELECT name from user where userID='$userID'";
+
+function getUserNameByID($db,$userID){
+	$query="SELECT name from user where id='$userID'";
 	$result=mysqli_query($db,$query);
 	$row=mysqli_fetch_assoc($result);
 	return $row['name'];

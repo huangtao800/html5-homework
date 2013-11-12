@@ -1,3 +1,25 @@
+<?php
+require_once('../include/mysql_connect.php'); 
+if(isset($_COOKIE['id'])){
+  $id=$_COOKIE['id'];
+  $name=$_COOKIE['name'];
+  $query="SELECT * from user where id = '$id'";
+  $result=mysqli_query($db,$query);
+  $num_rows=mysqli_num_rows($result);
+  if($num_rows>0){
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['name'];
+    $email=$row['email'];
+    $coin=$row['coin'];
+    $questionCount=$row['questionCount'];
+    $answerCount=$row['answerCount'];
+  }
+
+}else{
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,43 +38,9 @@
 </head>
 
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../index.php"><img src="../home/logoIcon.png" class="logoIcon" ></a>
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <div class="navbar-collapse collapse myNavBar">
-          <ul class="nav navbar-nav">
-            <li><a href="../askQ/tagList.html">Tags</a></li>
-          </ul>
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control navbarForm" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-          </form>
-
-          <div class="navbar-form navbar-right">
-            <div class="form-group">
-              <button class="btn btn-md btn-default" id="askButton">Ask Question</button>
-            </div>
-          </div>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="../home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div><!--navibar ends-->
+    <?php
+    require_once('../include/navbar.inc.php');
+    ?>
 
     <div class="container mainPane">
       <div class="navBar">
@@ -71,8 +59,8 @@
               <img src="user.png">
             </div>
             <div class="centerDiv">
-              <p><b>Tao Huang</b></p>
-              <p id="pointNumber">20<small> coins</small></p>
+              <p><b><?php print "$name"?></b></p>
+              <p id="pointNumber"><?php print "$coin"?><small> coins</small></p>
             </div>
           </div>
 
@@ -82,11 +70,11 @@
               <table>
                 <tr>
                   <td class="firstCol">Email Address</td>
-                  <td>huangtao7725@live.com</td>
+                  <td><?php print "$email"?></td>
                 </tr>
                 <tr>
                   <td class="firstCol">User Name</td>
-                  <td>Tao Huang</td>
+                  <td><?php print "$name"?></td>
                 </tr>
               </table>
           </div>
@@ -97,7 +85,7 @@
 
       <div class="navBar">
         <ul class="nav nav-tabs">
-          <li><a href="../home/HomePage.html">Questions</a></li>
+          <li><a href="../home/HomePage.php">Questions</a></li>
           <li class="active"><a href="../home/HomePage_Answer.html">Answers</a></li>
         </ul> 
     

@@ -15,6 +15,8 @@ if(isset($_COOKIE['id'])){
     $answerCount=$row['answerCount'];
   }
 
+}else{
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
 }
 ?>
 
@@ -36,48 +38,9 @@ if(isset($_COOKIE['id'])){
 </head>
 
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../index.php"><img src="../home/logoIcon.png" class="logoIcon" ></a>
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <div class="navbar-collapse collapse myNavBar">
-          <ul class="nav navbar-nav">
-            <li><a href="../askQ/tagList.html">Tags</a></li>
-          </ul>
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control navbarForm" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-          </form>
-
-          <div class="navbar-form navbar-right">
-            <div class="form-group">
-              <button class="btn btn-md btn-default" id="askButton">Ask Question</button>
-            </div>
-          </div>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a>
-              <ul class="dropdown-menu">
-                <li><a href="../home/HomePage.html">Home</a></li>
-                <li><a href="../home/HomePage.html">Sign out</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div><!--navibar ends-->
+    <?php
+    require_once('../include/navbar.inc.php');
+    ?>
 
     <div class="container mainPane">
       <div class="navBar">
@@ -107,7 +70,7 @@ if(isset($_COOKIE['id'])){
               <table>
                 <tr>
                   <td class="firstCol">Email Address</td>
-                  <td>huangtao7725@live.com</td>
+                  <td><?php print "$email"?></td>
                 </tr>
                 <tr>
                   <td class="firstCol">User Name</td>
@@ -129,7 +92,7 @@ if(isset($_COOKIE['id'])){
       </div><!--navbar ends--> 
 
       <div class="myAnswer">
-        <h4><b><span id="answerCount">5</span></b> <small>Questions</small></h4>
+        <h4><b><span id="answerCount"><?php print $questionCount?></span></b> <small>Questions</small></h4>
 
         <?php
         require_once('../include/useful.inc.php');
@@ -141,7 +104,7 @@ if(isset($_COOKIE['id'])){
           $title=$row['title'];
           $answerCount=$row['answerCount'];
           $userID=$row['userID'];
-          $userName=getUserNameByID($userID);
+          $userName=getUserNameByID($db,$userID);
 
           printQuestion($title,$answerCount,$userName);
           $row=mysqli_fetch_assoc($result);
@@ -150,53 +113,8 @@ if(isset($_COOKIE['id'])){
 
         ?>
 
-        <div class="row rowTD">
-          <div class="col-md-12">
-            <div class="questionItem">
-            <table>
-              <tr>
-                <td class="answerCountTD">
-                  <div class="answerCount">5</div>
-                  <div><small>Answers</small></div>
-                </td>
-                <td class="questionTD">
-                  <a href=""><h4>java 如何拖动窗体？</h4></a>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-                </td>
-                <td class="userTD">
-                  huangtao
-                </td>
-              </tr>
-            </table> 
-            </div><!--questionItem ends-->
-          </div>
-        </div>
+        
 
-        <div class="row rowTD">
-          <div class="col-md-12">
-            <div class="questionItem">
-            <table>
-              <tr>
-                <td class="answerCountTD">
-                  <div class="answerCount">5</div>
-                  <div><small>Answers</small></div>
-                </td>
-                <td class="questionTD">
-                  <a href=""><h4>java 如何拖动窗体？</h4></a>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-                </td>
-                <td class="userTD">
-                  huangtao
-                </td>
-              </tr>
-            </table> 
-            </div><!--questionItem ends-->
-          </div>
-        </div><!--rowTD ends-->        
       </div><!--myAnswer ends-->
 
     </div>
