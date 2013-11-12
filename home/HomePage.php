@@ -1,6 +1,20 @@
-<?php 
+<?php
+require_once('../include/mysql_connect.php'); 
 if(isset($_COOKIE['id'])){
+  $id=$_COOKIE['id'];
   $name=$_COOKIE['name'];
+  $query="SELECT * from user where id = '$id'";
+  $result=mysqli_query($db,$query);
+  $num_rows=mysqli_num_rows($result);
+  if($num_rows>0){
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['name'];
+    $email=$row['email'];
+    $coin=$row['coin'];
+    $questionCount=$row['questionCount'];
+    $answerCount=$row['answerCount'];
+  }
+
 }
 ?>
 
@@ -82,8 +96,8 @@ if(isset($_COOKIE['id'])){
               <img src="user.png">
             </div>
             <div class="centerDiv">
-              <p><b>Tao Huang</b></p>
-              <p id="pointNumber">20<small> coins</small></p>
+              <p><b><?php print "$name"?></b></p>
+              <p id="pointNumber"><?php print "$coin"?><small> coins</small></p>
             </div>
           </div>
 
@@ -116,6 +130,16 @@ if(isset($_COOKIE['id'])){
 
       <div class="myAnswer">
         <h4><b><span id="answerCount">5</span></b> <small>Questions</small></h4>
+
+        <?php
+        $query="SELECT * from question where userID='$id'";
+        $result=mysqli_query($db,$query);
+        $num_rows=mysqli_num_rows($result);
+        if($num_rows>0){
+
+        }
+        ?>
+
         <div class="row rowTD">
           <div class="col-md-12">
             <div class="questionItem">
