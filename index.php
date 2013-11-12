@@ -1,9 +1,16 @@
 <?php
 require_once('include/mysql_connect.php');
-$id=_COOKIE['id'];
-$query="select * from user where id = '$id'";
-$result=mysqli_execute($db,$query);
-$num_rows=mysqli_num_rows($result);
+if(isset($_COOKIE['id'])){
+  $id=$_COOKIE['id'];
+  $query="select * from user where id = '$id'";
+  $result=mysqli_query($db,$query);
+  $num_rows=mysqli_num_rows($result);
+  if($num_rows>0){
+    $row=mysqli_fetch_assoc($result);
+    $messageCount=$row['messageCount'];
+  }
+}
+
 
 ?>
 
@@ -51,7 +58,15 @@ $num_rows=mysqli_num_rows($result);
           </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="home/HomePage.html"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a></li>
+        <li><a href="home/HomePage.html"><span class="glyphicon glyphicon-user"></span> 
+          <span class="badge">
+            <?php 
+              if(isset($messageCount)){
+                print $messageCount;
+              }else{
+                print "";
+              }?>
+          </span></a></a></li>
       </ul>
     </div>
     <!--/.nav-collapse --> 
