@@ -18,8 +18,8 @@ function printQuestion($questionID,$title,$answerCount,$userName){
                   <div><small>Answers</small></div>
                 </td>
                 <td class='questionTD'>
-                  <a href=''><h4>$title</h4></a>
-                  <span class='label label-info labelTag'><a href='../askQ/question.php?id=$questionID' class='tagLink'>C++</a></span>
+                  <a href='../askQ/question.php?questionID=$questionID'><h4>$title</h4></a>
+                  <span class='label label-info labelTag'><a href='#' class='tagLink'>C++</a></span>
                   <span class='label label-info labelTag'><a href='#' class='tagLink'>Java</a></span>
                   <span class='label label-info labelTag'><a href='#' class='tagLink'>PHP</a></span>
                 </td>

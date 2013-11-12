@@ -46,6 +46,12 @@ h3{
 .peopleDiv{
 	background-color: #e0eaf1;
 	padding:10px;
+	padding-bottom: 5px;
+}
+
+.time{
+	margin-top: 2px;
+	margin-bottom: 0px;
 }
 
 

@@ -1,3 +1,19 @@
+<?php
+require_once('../include/mysql_connect.php');
+require_once('../include/useful.inc.php');
+$questionID=$_GET['questionID'];
+$query="SELECT * from question where id='$questionID'";
+$result=mysqli_query($db,$query);
+$num_rows=mysqli_num_rows($result);
+if($num_rows>0){
+    $row=mysqli_fetch_assoc($result);
+    $title=$row['title'];
+    $description=$row['description'];
+    $userID=$row['userID'];
+    $askUserName=getUserNameByID($db,$userID);
+    $time=date('Y-m-d H:i:s');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,12 +83,11 @@
 
     <div class="container mainPane">
 		<div class="title">
-        	<h2>How to write HTML</h2>
+        	<h2 class="myFont"><?php print $title?></h2>
         </div>
         
         <div class="row description">
-        	<p>How to write HTML How to write HTMLHow to write HTMLHow to write HTMLHow to write HTMLHow to write HTML
-            How to write HTMLHow to write HTMLHow to write HTMLHow to write HTML</p>
+        	<p><?php print $description ?></p>
         </div>
 
         <div class="row tags">
@@ -91,7 +106,8 @@
             <div class="col-md-2">
                 <div class="peopleDiv">
                     <img src="../home/userLogo.png" >
-                    huatao
+                    <?php print $askUserName?>
+                    <p class="time"><?php print "$time"?></p>
                 </div>
 
             </div>
@@ -188,7 +204,7 @@
         </div><!--end answerDiv-->
 
         <div>
-            <h3>Your Answer</h3>
+            <h3 class="myFont">Your Answer</h3>
             <div class="yourAnswerDiv">
                 <form>
                     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
