@@ -1,3 +1,12 @@
+<?php
+require_once('include/mysql_connect.php');
+$id=_COOKIE['id'];
+$query="select * from user where id = '$id'";
+$result=mysqli_execute($db,$query);
+$num_rows=mysqli_num_rows($result);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
