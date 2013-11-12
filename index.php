@@ -58,7 +58,7 @@ if(isset($_COOKIE['id'])){
           </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="include/gotoHome.php"><span class="glyphicon glyphicon-user"></span> 
+        <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> 
           <?php
           if(isset($messageCount)&&($messageCount!=0)){
                 print "<span class='badge'> $messageCount </span>";
@@ -66,7 +66,12 @@ if(isset($_COOKIE['id'])){
                 print "";
           }
           ?>
-          </a></a></li>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="include/gotoHome.php">Home</a></li>
+            <li><a href="../home/HomePage.html">Sign out</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
     <!--/.nav-collapse --> 
