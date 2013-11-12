@@ -27,7 +27,7 @@ if(isset($_COOKIE['id'])){
 <link rel="stylesheet" href="home/home.css">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="iCheck/skins/square/blue.css">
-<link rel="stylesheet" href="askq/search.css">
+<link rel="stylesheet" href="askQ/search.css">
 
 
 
