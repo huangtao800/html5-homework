@@ -1,22 +1,23 @@
 
 function askQuestion(){
-	var cookie=document.cookie;
-	var arrcookie=cookie.split(";");
-	var userid;
-	for(var i=0;i<arrcookie.length;i++){
-		var arr=arrcookie[i].split["="];
-		if(arr=="id"){
-			userid=arr[1];
-			break;
-		}
-	}
+	window.open("../include/gotoAsk.php")
+	// var cookie=document.cookie;
+	// var arrcookie=cookie.split(";");
+	// var userid=-1;
+	// for(var i=0;i<arrcookie.length;i++){
+	// 	var arr=arrcookie[i].split["="];
+	// 	if(arr=="id"){
+	// 		userid=arr[11];
+	// 		break;
+	// 	}
+	// }
 
 	
-	if(userid){
-		window.open("../askQ/ask.html");
-	}else{
-		window.open("../login/login.php");
-	}
+	// if(userid!=-1){
+	// 	window.open("../askQ/ask.html");
+	// }else{
+	// 	window.open("../login/login.php");
+	// }
 	
 }
 

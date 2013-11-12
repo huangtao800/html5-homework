@@ -53,7 +53,7 @@ if(isset($_COOKIE['id'])){
 
           <div class="navbar-form navbar-right">
             <div class="form-group">
-              <button class="btn btn-md btn-default" onclick="askQuestion()" id="askButton">Ask question</button>
+              <button class="btn btn-md btn-default" id="askButton">Ask question</button>
             </div>
           </div>
 
