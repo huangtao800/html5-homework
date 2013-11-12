@@ -101,12 +101,13 @@ if(isset($_COOKIE['id'])){
         $num_rows=mysqli_num_rows($result);
         $row=mysqli_fetch_assoc($result);
         for($row_num=0;$row_num<$num_rows;$row_num++){
+          $questionID=$row['id'];
           $title=$row['title'];
           $answerCount=$row['answerCount'];
           $userID=$row['userID'];
           $userName=getUserNameByID($db,$userID);
 
-          printQuestion($title,$answerCount,$userName);
+          printQuestion($questionID,$title,$answerCount,$userName);
           $row=mysqli_fetch_assoc($result);
         }
 

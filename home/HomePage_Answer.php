@@ -92,7 +92,33 @@ if(isset($_COOKIE['id'])){
       </div><!--navbar ends--> 
 
       <div class="myAnswer">
-        <h4><b><span id="answerCount">5</span></b> <small>Answers</small></h4>
+        <h4><b><span id="answerCount"><?php print "$answerCount"?></span></b> <small>Answers</small></h4>
+
+        <?php
+        require_once('../include/useful.inc.php');
+        $query="SELECT questionID from questionAnswer where answerUserID='$id'";
+        $result=mysqli_query($db,$query);
+        $num_rows=mysqli_num_rows($result);
+        $row=mysqli_fetch_assoc($result);
+        for($row_num=0;$row_num<$num_rows;$row_num++){
+          $questionID=$row['questionID'];
+          $query="SELECT * from question where id='$questionID'";
+          $result2=mysqli_query($db,$query);
+          $num_rows2=mysqli_num_rows($result2);
+          $row2=mysqli_fetch_assoc($result2);
+          for($row_num2=0;$row_num2<$num_rows2;$row_num2++){
+            $title=$row2['title'];
+            $answerCount=$row2['answerCount'];
+            $userName=$row2['userName'];
+          }
+
+          printQuestion($title,$answerCount,$userName);
+          $row=mysqli_fetch_assoc($result);
+        }
+
+
+
+        ?>
         <div class="row rowTD">
           <div class="col-md-12">
             <div class="questionItem">

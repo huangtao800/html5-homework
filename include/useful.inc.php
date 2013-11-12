@@ -7,7 +7,7 @@ function getUserNameByID($db,$userID){
 	return $row['name'];
 }
 
-function printQuestion($title,$answerCount,$userName){
+function printQuestion($questionID,$title,$answerCount,$userName){
 	print ("<div class='row rowTD'>
           <div class='col-md-12'>
             <div class='questionItem'>
@@ -19,7 +19,7 @@ function printQuestion($title,$answerCount,$userName){
                 </td>
                 <td class='questionTD'>
                   <a href=''><h4>$title</h4></a>
-                  <span class='label label-info labelTag'><a href='#' class='tagLink'>C++</a></span>
+                  <span class='label label-info labelTag'><a href='../askQ/question.php?id=$questionID' class='tagLink'>C++</a></span>
                   <span class='label label-info labelTag'><a href='#' class='tagLink'>Java</a></span>
                   <span class='label label-info labelTag'><a href='#' class='tagLink'>PHP</a></span>
                 </td>
