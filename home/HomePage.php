@@ -132,12 +132,21 @@ if(isset($_COOKIE['id'])){
         <h4><b><span id="answerCount">5</span></b> <small>Questions</small></h4>
 
         <?php
+        require_once('../include/useful.inc.php');
         $query="SELECT * from question where userID='$id'";
         $result=mysqli_query($db,$query);
         $num_rows=mysqli_num_rows($result);
-        if($num_rows>0){
+        $row=mysqli_fetch_assoc($result);
+        for($row_num=0;$row_num<$num_rows;$row_num++){
+          $title=$row['title'];
+          $answerCount=$row['answerCount'];
+          $userID=$row['userID'];
+          $userName=getUserNameByID($userID);
 
+          $row=mysqli_fetch_assoc($result);
         }
+
+
         ?>
 
         <div class="row rowTD">
