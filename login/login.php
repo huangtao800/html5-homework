@@ -19,7 +19,7 @@ if(isset($_POST['submitted'])){
 		setcookie('name',"huangtao",time()+86400,'/');
 		setcookie('id',$id,time()+86400,'/');
 
-		header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/home/HomePage.php');
+		header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
     exit();
 
 	}else{

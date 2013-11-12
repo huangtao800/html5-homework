@@ -58,7 +58,7 @@ if(isset($_COOKIE['id'])){
           </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="home/HomePage.html"><span class="glyphicon glyphicon-user"></span> 
+        <li><a href="include/gotoHome.php"><span class="glyphicon glyphicon-user"></span> 
           <?php
           if(isset($messageCount)&&($messageCount!=0)){
                 print "<span class='badge'> $messageCount </span>";
