@@ -59,14 +59,14 @@ if(isset($_COOKIE['id'])){
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="home/HomePage.html"><span class="glyphicon glyphicon-user"></span> 
-          <span class="badge">
-            <?php 
-              if(isset($messageCount)){
-                print $messageCount;
-              }else{
+          <?php
+          if(isset($messageCount)&&($messageCount!=0)){
+                print "<span class='badge'> $messageCount </span>";
+          }else{
                 print "";
-              }?>
-          </span></a></a></li>
+          }
+          ?>
+          </a></a></li>
       </ul>
     </div>
     <!--/.nav-collapse --> 
