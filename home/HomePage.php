@@ -143,6 +143,7 @@ if(isset($_COOKIE['id'])){
           $userID=$row['userID'];
           $userName=getUserNameByID($userID);
 
+          printQuestion($title,$answerCount,$userName);
           $row=mysqli_fetch_assoc($result);
         }
 
@@ -195,8 +196,8 @@ if(isset($_COOKIE['id'])){
             </table> 
             </div><!--questionItem ends-->
           </div>
-        </div>        
-      </div>
+        </div><!--rowTD ends-->        
+      </div><!--myAnswer ends-->
 
     </div>
     
