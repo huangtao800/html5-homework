@@ -1,3 +1,8 @@
+<?
+if(!isset($_COOKIE['id'])){
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

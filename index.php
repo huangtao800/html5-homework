@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once('include/mysql_connect.php');
-if(isset($_COOKIE['id'])){
-  $id=$_COOKIE['id'];
+if(isset($_SESSION['id'])){
+  $id=$_SESSION['id'];
   $query="select * from user where id = '$id'";
   $result=mysqli_query($db,$query);
   $num_rows=mysqli_num_rows($result);
@@ -50,7 +51,7 @@ if(isset($_COOKIE['id'])){
       <ul class="nav nav-tabs">
         <li><a href="askQ/tagList.html">Tags</a></li>
         <li><a href="">Unanswered</a></li>
-        <li><a href="askQ/ask.html">I want to Ask</a></li>
+        <li><a href="askQ/ask.php">I want to Ask</a></li>
       </ul>
     </div>
   </div>

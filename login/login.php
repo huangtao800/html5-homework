@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $isPasswordWrong=FALSE;
 if(isset($_POST['submitted'])){
 	$db=mysqli_connect("localhost","root","Paul_1993","askq");
@@ -16,8 +17,10 @@ if(isset($_POST['submitted'])){
 		$name=$row['name'];
 		$id=$row['id'];
     
-		setcookie('name',"huangtao",time()+86400,'/');
-		setcookie('id',$id,time()+86400,'/');
+    $_SESSION['name']=$name;
+    $_SESSION['id']=$id;
+		//setcookie('name',$name,time()+86400,'/');
+		//setcookie('id',$id,time()+86400,'/');
 
 		header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
     exit();

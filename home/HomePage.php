@@ -1,8 +1,9 @@
 <?php
+session_start();
 require_once('../include/mysql_connect.php'); 
-if(isset($_COOKIE['id'])){
-  $id=$_COOKIE['id'];
-  $name=$_COOKIE['name'];
+if(isset($_SESSION['id'])){
+  $id=$_SESSION['id'];
+  $name=$_SESSION['name'];
   $query="SELECT * from user where id = '$id'";
   $result=mysqli_query($db,$query);
   $num_rows=mysqli_num_rows($result);

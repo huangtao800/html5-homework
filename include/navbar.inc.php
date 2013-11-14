@@ -1,7 +1,7 @@
 <!-- Static navbar -->
 <div class="navbar navbar-default navbar-static-top">
   <div class="container">
-    <div class="navbar-header"> <a href="index.php"><img src="../home/logoIcon.png" class="logoIcon" ></a>
+    <div class="navbar-header"> <a href="../index.php"><img src="../home/logoIcon.png" class="logoIcon" ></a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
     </div>
     <div class="navbar-collapse collapse myNavBar">
@@ -32,8 +32,8 @@
           ?>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="include/gotoHome.php">Home</a></li>
-            <li><a href="../home/HomePage.html">Sign out</a></li>
+            <li><a href="../home/Homepage.php">Home</a></li>
+            <li><a href="../home/HomePage.php">Sign out</a></li>
           </ul>
         </li>
       </ul>
