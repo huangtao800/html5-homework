@@ -1,6 +1,9 @@
 <?php
 require_once('../include/mysql_connect.php');
 require_once('../include/useful.inc.php');
+if(!isset($_GET['questionID'])){
+    header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
+}
 $questionID=$_GET['questionID'];
 $query="SELECT * from question where id='$questionID'";
 $result=mysqli_query($db,$query);
