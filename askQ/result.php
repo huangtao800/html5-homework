@@ -89,6 +89,7 @@ if(isset($_POST['submitted'])){
           }
         }
         ?>
+        <!-->
         <div class="row">
         <div class="col-md-12">
           <div class="questionItem">
@@ -163,7 +164,7 @@ if(isset($_POST['submitted'])){
           </div>
           
         </div>
-        </div><!--row ends-->
+        </div>
 
         <div class="row">
         <div class="col-md-12">
@@ -188,7 +189,7 @@ if(isset($_POST['submitted'])){
           </div>
           
         </div>
-        </div><!--row ends-->
+        </div>
 
         <div class="row">
         <div class="col-md-12">
@@ -213,7 +214,7 @@ if(isset($_POST['submitted'])){
           </div>
           
         </div>
-        </div><!--row ends-->
+        </div>
 
         <div class="row">
         <div class="col-md-12">
