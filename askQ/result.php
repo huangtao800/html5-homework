@@ -1,3 +1,23 @@
+<?php
+require_once("../include/mysql_connect.php");
+if(isset($_POST['submitted'])){
+  $keywords=$_POST['keywords'];
+  $key_arr=explode(' ', $keywords);
+  $query="SELECT * from question where ";
+  for($i=0;$i<count($key_arr)-1;$i++){
+    $key=$key_arr[$i];
+    $query=$query . "title like '%$key%' and ";
+  }
+  $key=$key_arr[count($key_arr)-1];
+  $query=$query . "title like '%$key%'";
+  //print "$query";
+
+  $result=mysqli_query($db,$query);
+  $num_rows=mysqli_num_rows($result);
+  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,60 +38,20 @@
 </head>
 
 <body>
-    <!-- Static navbar -->
-    <div class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="../index.phps"><img src="../home/logoIcon.png" class="logoIcon" ></a>
-          
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <div class="navbar-collapse collapse myNavBar">
-          <ul class="nav navbar-nav">
-            <li><a href="../askQ/tagList.html">Tags</a></li>
-          </ul>
-
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control navbarForm" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-          </form>
-
-          <div class="navbar-form navbar-right">
-            <div class="form-group">
-              <button class="btn btn-md btn-default" onclick="askQuestion()" id="askButton">Ask Question</button>
-            </div>
-          </div>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <span class="badge">42</span></a></a>
-              <ul class="dropdown-menu">
-                <li><a href="../home/HomePage.html">Home</a></li>
-                <li><a href="../home/HomePage.html">Sign out</a></li>
-              </ul>
-            </li>
-          </ul>
-
-
-        </div><!--/.nav-collapse -->
-      </div>
-    </div><!--navibar ends-->
+ <?php require_once('../include/navbar.inc.php') ?>
 
     <div class="container mainPane">
       
       <div class="row">
         <div class="col-md-12">
-          <form role="form" id="formPane">
+          <form role="form" id="formPane" action='result.php' onsubmit="return check()">
             <div class="form-group">
               <div class="row">
-                <div class="col-md-9"><input type="text" class="form-control"></div>
-                <div class="col-md-3"><button class="btn btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button></div>
+                <div class="col-md-9"><input type="text" class="form-control" name="keywords" id="keywords"></div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary btn-block myInput" type="submit" ><span class="glyphicon glyphicon-search"></span> Search</button>
+                  <label style="display:none" id="tip">请输入搜索内容</label>
+                </div>
               </div>          
             </div>
 
@@ -93,6 +73,22 @@
       </div>
 
       <div class="resultList">
+        <?php
+        require_once('../include/useful.inc.php');
+        if($result){
+          $num_rows=mysqli_num_rows($result);
+          $row=mysqli_fetch_assoc($result);
+          for($row_num=0;$row_num<$num_rows;$row_num++){
+            $questionID=$row['id'];
+            $title=$row['title'];
+            $answerCount=$row['answerCount'];
+            $userID=$row['userID'];
+            $userName=getUserNameByID($db,$userID); 
+            printQuestion($questionID,$title,$answerCount,$userName);
+            $row=mysqli_fetch_assoc($result);           
+          }
+        }
+        ?>
         <div class="row">
         <div class="col-md-12">
           <div class="questionItem">

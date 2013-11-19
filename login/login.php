@@ -113,7 +113,7 @@ if(isset($_POST['submitted'])){
               ?>
             </form>
             <p id="registerLink">
-              <a href="../register/register.html">还没有账号？现在注册！</a>
+              <a href="../register/register.php">还没有账号？现在注册！</a>
             </p>
         </div>
 

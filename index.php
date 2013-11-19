@@ -59,15 +59,17 @@ if(isset($_SESSION['id'])){
 
   <div class="row">
     <div class="col-md-12">
-      <form id="formPane" action="../include/submitSearch.php">
+      <form id="formPane" method="post" action="askQ/result.php" onsubmit="return check()">
 
         <div class="form-group">
           <div class="row">
             <div class="col-md-9">
-              <input type="text" class="form-control" name="keywords">
+              <input type="text" class="form-control" name="keywords" id="keywords">
+              <input type="hidden" name="submitted" value="true">
             </div>
             <div class="col-md-3">
               <button class="btn btn-lg btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
+              <label style="display:none" id="tip">请输入搜索内容</label>
             </div>
           </div>
         </div>

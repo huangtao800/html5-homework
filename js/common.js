@@ -23,3 +23,12 @@ function askQuestion(){
 
 document.getElementById("askButton").onclick=askQuestion;
 
+function check(){
+	var keywords=document.getElementById("keywords").value;
+	if(!keywords){
+		document.getElementById("tip").style.display="inline";
+		return false;
+	}
+	return true;
+}
+
