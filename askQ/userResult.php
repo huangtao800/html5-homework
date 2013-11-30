@@ -1,3 +1,21 @@
+<?php
+require_once('../include/mysql_connect.php');
+if(!isset($_GET['keywords'])){
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
+}
+$keywords=$_GET['keywords'];
+$keywords=trim($keywords);
+$key_arr=explode(' ', $keywords);
+$query="SELECT * from user where ";
+for($i=0;$i<count($key_arr)-1;$i++){
+  $key=$key_arr[$i];
+  $query=$query . "name like '%$key%' or ";
+}
+$key=$key_arr[count($key_arr)-1];
+$query=$query . "name like '%$key%'";
+
+$result=mysqli_query($db,$query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,39 +112,25 @@
 
 
           <div class="resultList">
-            <div class="row userRow">
-              <div class="col-md-12">
-                <div class="userItem">
-                  <div class="row">
-                    <div class="col-sm-1">
-                      <div class="userImgDiv">
-                        <a href="../home/HomePage.html"><img src="../home/user.png" class="userImg"></a>
-                      </div>
-                    </div>
-                    <div class="col-sm-10">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <div class="userInfo">
-                            <div><a href="../home/HomePage.html" class="userNameLink">huangtao</a></div>
-                            <div><p>我是一个苦逼码农</p></div>
-                          </div>
-                        </div>
-                      </div>
+            <?php
+            require_once('../include/useful.inc.php');
+            if($result){
+              $num_rows=mysqli_num_rows($result);
 
-                      <div class=row>
-                        <div class="col-sm-2 QA">
-                          <span class="answerCount">5</span><small> Answers</small>
-                        </div>
-                        <div>
-                          <span class="questionCount">3</span><small> Questions</small>
-                        </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div><!--userItem ends-->            
-              </div>
-            </div><!--userRow ends-->
+              $row=mysqli_fetch_assoc($result);
+              for($row_num=0;$row_num<$num_rows;$row_num++){
+                
+                $name=$row['name'];
+                $answerCount=$row['answerCount'];
+                $questionCount=$row['questionCount'];
+                $userID=$row['id'];
+                $userInfo=$row['info'];
+                
+                printUser($userID,$name,$answerCount,$questionCount,$userInfo);
+                $row=mysqli_fetch_assoc($result);           
+              }
+            }
+            ?>
  
 
             <div class="row userRow">

@@ -1,7 +1,20 @@
 <?php
 session_start();
-require_once('../include/mysql_connect.php'); 
-if(isset($_SESSION['id'])){
+require_once('../include/mysql_connect.php');
+if(isset($_GET['id'])){
+  $id=$_GET['id'];
+  $query="SELECT * from user where id = '$id'";
+  $result=mysqli_query($db,$query);
+  $num_rows=mysqli_num_rows($result);
+  if($num_rows>0){
+    $row=mysqli_fetch_assoc($result);
+    $name=$row['name'];
+    $email=$row['email'];
+    $coin=$row['coin'];
+    $questionCount=$row['questionCount'];
+    $answerCount=$row['answerCount'];
+  }
+}else if(isset($_SESSION['id'])){
   $id=$_SESSION['id'];
   $name=$_SESSION['name'];
   $query="SELECT * from user where id = '$id'";
@@ -47,7 +60,8 @@ if(isset($_SESSION['id'])){
       <div class="navBar">
         <ul class="nav nav-tabs">
           <li class="active"><a href="">Home</a></li>
-          <li><a href="">Edit</a></li>
+          <?php if(!isset($_GET['id'])) print"<li><a href=''>Edit</a></li>"?>
+          
         </ul> 
     
       </div><!--navbar ends-->

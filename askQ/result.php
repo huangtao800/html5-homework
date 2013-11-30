@@ -15,7 +15,6 @@ $key=$key_arr[count($key_arr)-1];
 $query=$query . "title like '%$key%'";
 
 $result=mysqli_query($db,$query);
-$num_rows=mysqli_num_rows($result);
 
 ?>
 
@@ -79,6 +78,7 @@ $num_rows=mysqli_num_rows($result);
         require_once('../include/useful.inc.php');
         if($result){
           $num_rows=mysqli_num_rows($result);
+
           $row=mysqli_fetch_assoc($result);
           for($row_num=0;$row_num<$num_rows;$row_num++){
             $questionID=$row['id'];
@@ -91,157 +91,6 @@ $num_rows=mysqli_num_rows($result);
           }
         }
         ?>
-        <!-->
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href="../askQ/question.html"><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <div class="description"></div>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div>
-
-        <div class="row">
-        <div class="col-md-12">
-          <div class="questionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table> 
-          </div>
-          
-        </div>
-        </div><!--row ends-->
       </div><!--resultList ends-->
       
 

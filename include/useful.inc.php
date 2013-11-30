@@ -32,4 +32,40 @@ function printQuestion($questionID,$title,$answerCount,$userName){
           </div>
         </div>");
 }
+
+function printUser($userID,$userName,$answerCount,$questionCount,$userInfo){
+  print (" <div class='row userRow'>
+              <div class='col-md-12'>
+                <div class='userItem'>
+                  <div class='row'>
+                    <div class='col-sm-1'>
+                      <div class='userImgDiv'>
+                        <a href='../home/HomePage.html'><img src='../home/user.png' class='userImg'></a>
+                      </div>
+                    </div>
+                    <div class='col-sm-10'>
+                      <div class='row'>
+                        <div class='col-sm-12'>
+                          <div class='userInfo'>
+                            <div><a href='../home/HomePage.php?id=$userID' class='userNameLink'>$userName</a></div>
+                            <div><p>$userInfo</p></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class=row>
+                        <div class='col-sm-2 QA'>
+                          <span class='answerCount'>$answerCount</span><small> Answers</small>
+                        </div>
+                        <div>
+                          <span class='questionCount'>$questionCount</span><small> Questions</small>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>            
+              </div>
+            </div>");
+}
 ?>
