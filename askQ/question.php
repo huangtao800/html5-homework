@@ -44,7 +44,7 @@ if($num_rows>0){
 
     <div class="container mainPane">
 		<div class="title">
-        	<h2 class="myFont"><?php print $title?></h2>
+        	<h2 class="myFont"><?php print $title ?></h2>
         </div>
         
         <div class="row description">

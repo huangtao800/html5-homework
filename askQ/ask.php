@@ -1,7 +1,32 @@
 <?
 session_start();
+require_once('../include/mysql_connect.php');
 if(!isset($_SESSION['id'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
+}
+if(isset($_POST['submitted'])){
+  $userID=$_SESSION['id'];
+  $title=$_POST['title'];
+  $description=$_POST['description'];
+  $tagList=$_POST['tags'];
+  $tagList=trim($tagList);
+  $tag_arr=explode(' ', $tagList);
+  $coin=$_POST['coin'];
+  $time=date('Y-m-d H:i:s');
+  if(isset($_FILES['upload'])){
+    $allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
+    if(in_array($_FILES['upload']['type'], $allowed)){
+      if(move_uploaded_file($_FILES['upload']['tmp_name'], "../../upload/{$_FILES['upload']['name']}"))
+    }else{
+      echo "<script>alert('不支持该类型的文件')<script>";
+    }
+  }
+  $insertString="INSERT INTO question(title,description,userID,time) VALUES ('$title','$description','$userID','$time')";
+  mysqli_query($db,$insertString);
+  $questionID=mysqli_insert_id($db);
+  if($questionID!=0){
+    header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID=$questionID');
+  }
 }
 
 ?>
@@ -93,10 +118,11 @@ if(!isset($_SESSION['id'])){
         </div>
 
         <div class="form-group">
-          <label for="file" class="col-sm-2 control-label">上传文件</label>
+          <label for="file" class="col-sm-2 control-label">上传图片</label>
           <div class="col-sm-7">
             <input type="hidden" name="MAX_FILE_SIZE" vlaue="52428800">
-           <input type="file" name="file">
+            <input type="file" name="upload">
+            <input type="hidden" name="submitted" value="true">
             
           </div>
         </div>
@@ -104,7 +130,7 @@ if(!isset($_SESSION['id'])){
         <div class="form-group">
           <label for="coinChooser" class="col-sm-2 control-label">悬赏分值</label>
           <div class="col-sm-7">
-            <select id="coinChooser" class="form-control">
+            <select id="coinChooser" class="form-control" name="coin">
                     <option value="0" selected="selected">0</option>
                         <option value="5">5</option>
                         <option value="10">10</option>
