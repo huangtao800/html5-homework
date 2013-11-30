@@ -1,5 +1,6 @@
 <?
-if(!isset($_COOKIE['id'])){
+session_start();
+if(!isset($_SESSION['id'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
 }
 ?>

@@ -1,21 +1,22 @@
 <?php
 require_once("../include/mysql_connect.php");
-if(isset($_POST['submitted'])){
-  $keywords=$_POST['keywords'];
-  $key_arr=explode(' ', $keywords);
-  $query="SELECT * from question where ";
-  for($i=0;$i<count($key_arr)-1;$i++){
-    $key=$key_arr[$i];
-    $query=$query . "title like '%$key%' and ";
-  }
-  $key=$key_arr[count($key_arr)-1];
-  $query=$query . "title like '%$key%'";
-  //print "$query";
-
-  $result=mysqli_query($db,$query);
-  $num_rows=mysqli_num_rows($result);
-  
+if(!isset($_GET['keywords'])){
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
 }
+$keywords=$_GET['keywords'];
+$keywords=trim($keywords);
+$key_arr=explode(' ', $keywords);
+$query="SELECT * from question where ";
+for($i=0;$i<count($key_arr)-1;$i++){
+  $key=$key_arr[$i];
+  $query=$query . "title like '%$key%' or ";
+}
+$key=$key_arr[count($key_arr)-1];
+$query=$query . "title like '%$key%'";
+
+$result=mysqli_query($db,$query);
+$num_rows=mysqli_num_rows($result);
+
 ?>
 
 <!DOCTYPE html>
@@ -44,26 +45,27 @@ if(isset($_POST['submitted'])){
       
       <div class="row">
         <div class="col-md-12">
-          <form role="form" id="formPane" action='result.php' onsubmit="return check()">
+          <form role="form" id="formPane" action='../index.php'>
             <div class="form-group">
               <div class="row">
-                <div class="col-md-9"><input type="text" class="form-control" name="keywords" id="keywords"></div>
+                <div class="col-md-9"><input type="text" class="form-control" name="keywords" required value="<?php echo $keywords?>"></div>
                 <div class="col-md-3">
                   <button class="btn btn-primary btn-block myInput" type="submit" ><span class="glyphicon glyphicon-search"></span> Search</button>
-                  <label style="display:none" id="tip">请输入搜索内容</label>
+                  
                 </div>
               </div>          
             </div>
 
             <div class="row">
               <div class="col-md-1 radioDiv">
-                <input type="radio" name="iCheck" id="chooseQuestion" checked>
+                <input type="radio" name="iCheck" id="chooseQuestion" value='0' checked>
               </div> 
               <div class="col-md-2">
                 <label for="chooseQuestion">Question</label>
               </div>
               <div class="col-md-1 radioDiv">
-                <input type="radio" name="iCheck" id="chooseUser">
+                <input type="radio" name="iCheck" id="chooseUser" value='1'>
+                <input type="hidden" name="submitted" value="true">
               </div>
               <div class="col-md-2"><label for="chooseUser">User</label></div>
             </div>            

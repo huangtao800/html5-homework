@@ -8,11 +8,13 @@
       <ul class="nav navbar-nav">
         <li><a href="askQ/tagList.html">Tags</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form class="navbar-form navbar-left" role="search" action="../index.php" method="get">
         <div class="form-group">
-          <input type="text" class="form-control navbarForm" placeholder="Search">
+          <input type="text" class="form-control navbarForm" name="keywords" placeholder="Search">
+          <input type="hidden" name="iCheck" value='0'>
+          <input type="hidden" name="submitted" value="true">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
+        <button type="submit" class="btn btn-default" style="margin-left:5px" >Search</button>
       </form>
 
           <div class="navbar-form navbar-right">
@@ -33,7 +35,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="../home/Homepage.php">Home</a></li>
-            <li><a href="../home/HomePage.php">Sign out</a></li>
+            <li><a href="../include/signOut.php">Sign out</a></li>
           </ul>
         </li>
       </ul>

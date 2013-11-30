@@ -1,5 +1,13 @@
 <?php
-session_start();
+if(isset($_GET['submitted'])){
+  if($_GET['iCheck']==0){
+    $keywords=$_GET['keywords']; 
+    echo "<script>location.href='/askQ/result.php?keywords=$keywords'</script>";
+  }else{
+    $keywords=$_GET['keywords']; 
+    echo "<script>location.href='/askQ/userResult.php?keywords=$keywords'</script>";
+  }
+}
 require_once('include/mysql_connect.php');
 if(isset($_SESSION['id'])){
   $id=$_SESSION['id'];
@@ -59,17 +67,17 @@ if(isset($_SESSION['id'])){
 
   <div class="row">
     <div class="col-md-12">
-      <form id="formPane" method="post" action="askQ/result.php" onsubmit="return check()">
+      <form id="formPane" method="get" action="index.php">
 
         <div class="form-group">
           <div class="row">
             <div class="col-md-9">
-              <input type="text" class="form-control" name="keywords" id="keywords">
+              <input type="text" class="form-control" name="keywords" required>
               <input type="hidden" name="submitted" value="true">
             </div>
             <div class="col-md-3">
               <button class="btn btn-lg btn-primary btn-block myInput" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
-              <label style="display:none" id="tip">请输入搜索内容</label>
+              
             </div>
           </div>
         </div>
@@ -77,13 +85,13 @@ if(isset($_SESSION['id'])){
 
         <div class="row">
           <div class="col-md-1 radioDiv">
-            <input type="radio" name="iCheck questionCheck" id="chooseQuestion" checked>
+            <input type="radio" name="iCheck" id="chooseQuestion" value='0' checked>
           </div> 
           <div class="col-md-2">
             <label for="chooseQuestion">Question</label>
           </div>
           <div class="col-md-1 radioDiv">
-            <input type="radio" name="iCheck userCheck" id="chooseUser">
+            <input type="radio" name="iCheck" id="chooseUser" value='1'>
           </div>
           <div class="col-md-2"><label for="chooseUser">User</label></div>
         </div>
