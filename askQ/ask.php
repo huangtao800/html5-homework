@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['id'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,32 +70,33 @@ if(!isset($_SESSION['id'])){
 
 
     <div class="container mainPane">
-      <form class="form-horizontal" role="form">
+      <form class="form-horizontal" enctype="multipart/form-data" role="form" method="post">
         <div class="form-group">
           <label for="title" class="col-sm-2 control-label">Title</label>
           <div class="col-sm-7">
-            <input type="text" id="title" class="form-control">
+            <input type="text" id="title" class="form-control" name="title">
           </div>
         </div>
 
         <div class="form-group">
           <label for="description" class="col-sm-2 control-label">Description</label>
           <div class="col-sm-7">
-            <textarea type="text" class="form-control" id="description" rows=10></textarea>
+            <textarea type="text" class="form-control" id="description" rows=10 name="description"></textarea>
           </div>
         </div>
 
         <div class="form-group">
           <label for="tag" class="col-sm-2 control-label">Tags</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" id="tag">
+            <input type="text" class="form-control" id="tag" name="tag">
           </div>
         </div>
 
         <div class="form-group">
           <label for="file" class="col-sm-2 control-label">上传文件</label>
           <div class="col-sm-7">
-           <input type="file">
+            <input type="hidden" name="MAX_FILE_SIZE" vlaue="52428800">
+           <input type="file" name="file">
             
           </div>
         </div>
