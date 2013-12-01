@@ -15,7 +15,13 @@ if($num_rows>0){
     $userID=$row['userID'];
     $askUserName=getUserNameByID($db,$userID);
     $time=date('Y-m-d H:i:s');
+}else{
+    header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
 }
+
+$tagQuery="SELECT * FROM questiontag where questionID='$questionID'";
+$tagResult=mysqli_query($db,$tagQuery);
+$tag_num_rows=mysqli_num_rows($tagResult);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,8 +58,16 @@ if($num_rows>0){
         </div>
 
         <div class="row tags">
-        	<span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-            <span class="label label-info labelTag"><a href="#" class="tagLink">HTML</a></span>
+            <?php
+            if($tag_num_rows>0){
+                $tag_row=mysqli_fetch_assoc($tagResult);
+                for($i=0;$i<$tag_num_rows;$i++){
+                    $tagName=$tag_row['tag'];
+                    print "<span class='label label-info labelTag'><a href='result.php?tag=$tagName' class='tagLink'>C++</a></span>";
+                }
+            }
+            ?>
+        	
         </div>
 
         <div class="row auxiDiv">

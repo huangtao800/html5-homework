@@ -2,6 +2,31 @@
 require_once("../include/mysql_connect.php");
 if(!isset($_GET['keywords'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
+}else if(!isset($_GET['tag'])){
+  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
+}
+if(isset($_GET['keywords'])){
+  $keywords=$_GET['keywords'];
+  $keywords=trim($keywords);
+  $key_arr=explode(' ', $keywords);
+  $query="SELECT * from question where ";
+  for($i=0;$i<count($key_arr)-1;$i++){
+    $key=$key_arr[$i];
+    $query=$query . "title like '%$key%' or ";
+  }
+  $key=$key_arr[count($key_arr)-1];
+  $query=$query . "title like '%$key%'";
+
+  $result=mysqli_query($db,$query);
+}else{
+  $tagName=$_GET['tag'];
+  $queryTag="SELECT * FROM questiontag where tag='$tag'";
+  $tagResult=mysqli_query($db,$queryTag);
+  $tag_num_rows=mysqli_num_rows($tagResult);
+  if($tag_num_rows<=0){
+    header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
+  }
+  
 }
 $keywords=$_GET['keywords'];
 $keywords=trim($keywords);
