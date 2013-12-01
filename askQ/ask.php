@@ -30,11 +30,20 @@ if(isset($_POST['submitted'])){
     $insertString="INSERT INTO question(title,description,userID,coin,time) VALUES ('$title','$description','$userID','$coin','$time')";
   }
 
-  print $fileName;
+  
   mysqli_query($db,$insertString);
   $questionID=mysqli_insert_id($db);
   //print $questionID;
   if($questionID!=0){
+    $insertTag="INSERT INTO questiontag(questionID,tag) VALUES ('$questionID'";
+    for ($i=0;$i<count($tag_arr)-1;$i++) {
+      $currentTag=$tag_arr[$i];
+      $insertTag=$insertTag.",'$currentTag'";
+    }
+    $currentTag=$tag_arr[$i];
+    $insertTag=$insertTag.",'$currentTag')";
+    print($insertTag);
+    mysqli_query($db,$insertTag);
     header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
   }
 }
