@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 require_once('../include/mysql_connect.php');
 if(!isset($_SESSION['id'])){
@@ -13,19 +13,29 @@ if(isset($_POST['submitted'])){
   $tag_arr=explode(' ', $tagList);
   $coin=$_POST['coin'];
   $time=date('Y-m-d H:i:s');
-  if(isset($_FILES['upload'])){
+
+  
+  $insertString="";
+  if(!empty($_FILES['upload']['name'])){
     $allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
     if(in_array($_FILES['upload']['type'], $allowed)){
-      if(move_uploaded_file($_FILES['upload']['tmp_name'], "../../upload/{$_FILES['upload']['name']}"))
+      if(move_uploaded_file($_FILES['upload']['tmp_name'], "../upload/{$_FILES['upload']['name']}")){
+        $fileName=$_FILES['upload']['name'];
+        $insertString="INSERT INTO question(title,description,userID,coin,time,fileName) VALUES ('$title','$description','$userID','$coin','$time','$fileName')";
+      }
     }else{
-      echo "<script>alert('不支持该类型的文件')<script>";
+      echo "Please upload a JPEG or PNG image";
     }
+  }else{
+    $insertString="INSERT INTO question(title,description,userID,coin,time) VALUES ('$title','$description','$userID','$coin','$time')";
   }
-  $insertString="INSERT INTO question(title,description,userID,time) VALUES ('$title','$description','$userID','$time')";
+
+  print $fileName;
   mysqli_query($db,$insertString);
   $questionID=mysqli_insert_id($db);
+  //print $questionID;
   if($questionID!=0){
-    header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID=$questionID');
+    header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
   }
 }
 
@@ -99,21 +109,21 @@ if(isset($_POST['submitted'])){
         <div class="form-group">
           <label for="title" class="col-sm-2 control-label">Title</label>
           <div class="col-sm-7">
-            <input type="text" id="title" class="form-control" name="title">
+            <input type="text" id="title" class="form-control" name="title" required>
           </div>
         </div>
 
         <div class="form-group">
           <label for="description" class="col-sm-2 control-label">Description</label>
           <div class="col-sm-7">
-            <textarea type="text" class="form-control" id="description" rows=10 name="description"></textarea>
+            <textarea type="text" class="form-control" id="description" rows=10 name="description" required></textarea>
           </div>
         </div>
 
         <div class="form-group">
           <label for="tag" class="col-sm-2 control-label">Tags</label>
           <div class="col-sm-7">
-            <input type="text" class="form-control" id="tag" name="tag">
+            <input type="text" class="form-control" id="tag" name="tags" required>
           </div>
         </div>
 
