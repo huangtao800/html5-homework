@@ -1,8 +1,6 @@
 <?php
 require_once("../include/mysql_connect.php");
-if(!isset($_GET['keywords'])){
-  header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
-}else if(!isset($_GET['tag'])){
+if(!isset($_GET['keywords'])&&!isset($_GET['tag'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
 }
 if(isset($_GET['keywords'])){
@@ -20,26 +18,11 @@ if(isset($_GET['keywords'])){
   $result=mysqli_query($db,$query);
 }else{
   $tagName=$_GET['tag'];
-  $queryTag="SELECT * FROM questiontag where tag='$tag'";
+  $queryTag="SELECT * FROM questiontag where tag='$tagName'";
   $tagResult=mysqli_query($db,$queryTag);
-  $tag_num_rows=mysqli_num_rows($tagResult);
-  if($tag_num_rows<=0){
-    header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
-  }
-  
-}
-$keywords=$_GET['keywords'];
-$keywords=trim($keywords);
-$key_arr=explode(' ', $keywords);
-$query="SELECT * from question where ";
-for($i=0;$i<count($key_arr)-1;$i++){
-  $key=$key_arr[$i];
-  $query=$query . "title like '%$key%' or ";
-}
-$key=$key_arr[count($key_arr)-1];
-$query=$query . "title like '%$key%'";
 
-$result=mysqli_query($db,$query);
+}
+
 
 ?>
 
@@ -72,7 +55,7 @@ $result=mysqli_query($db,$query);
           <form role="form" id="formPane" action='../index.php'>
             <div class="form-group">
               <div class="row">
-                <div class="col-md-9"><input type="text" class="form-control" name="keywords" required value="<?php echo $keywords?>"></div>
+                <div class="col-md-9"><input type="text" class="form-control" name="keywords" required value="<?php if(isset($_GET['keywords']))echo $keywords?>"></div>
                 <div class="col-md-3">
                   <button class="btn btn-primary btn-block myInput" type="submit" ><span class="glyphicon glyphicon-search"></span> Search</button>
                   
@@ -101,7 +84,7 @@ $result=mysqli_query($db,$query);
       <div class="resultList">
         <?php
         require_once('../include/useful.inc.php');
-        if($result){
+        if(isset($_GET['keywords'])){
           $num_rows=mysqli_num_rows($result);
 
           $row=mysqli_fetch_assoc($result);
@@ -114,6 +97,29 @@ $result=mysqli_query($db,$query);
             printQuestion($questionID,$title,$answerCount,$userName);
             $row=mysqli_fetch_assoc($result);           
           }
+        }else if(isset($_GET['tag'])){
+          $tag_num_rows=mysqli_num_rows($tagResult);
+          $tagRow=mysqli_fetch_assoc($tagResult);
+          for($i=0;$i<$tag_num_rows;$i++){
+            $currentQuestionID=$tagRow['questionID'];
+            $currentQuestion=getQuestionByID($currentQuestionID,$db);
+
+            $questionID=$currentQuestionID;
+            $title=$currentQuestion['title'];
+            $answerCount=$currentQuestion['answerCount'];
+            $userID=$currentQuestion['userID'];
+            $userName=getUserNameByID($db,$userID);
+            printQuestion($questionID,$title,$answerCount,$userName);
+
+            $tagRow=mysqli_fetch_assoc($tagResult);
+          }
+        }
+
+        function getQuestionByID($questionID,$db){
+          $query="SELECT * FROM question WHERE id='$questionID'";
+          $result=mysqli_query($db,$query);
+          $row=mysqli_fetch_assoc($result);
+          return $row;
         }
         ?>
       </div><!--resultList ends-->

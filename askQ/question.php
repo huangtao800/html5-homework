@@ -63,7 +63,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
                 $tag_row=mysqli_fetch_assoc($tagResult);
                 for($i=0;$i<$tag_num_rows;$i++){
                     $tagName=$tag_row['tag'];
-                    print "<span class='label label-info labelTag'><a href='result.php?tag=$tagName' class='tagLink'>C++</a></span>";
+                    print "<span class='label label-info labelTag'><a href='result.php?tag=$tagName' class='tagLink'>$tagName</a></span>";
                 }
             }
             ?>
