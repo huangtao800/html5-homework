@@ -15,6 +15,7 @@ if($num_rows>0){
     $userID=$row['userID'];
     $askUserName=getUserNameByID($db,$userID);
     $time=date('Y-m-d H:i:s');
+    $fileName=$row['fileName'];
 }else{
     header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
 }
@@ -72,7 +73,12 @@ $tag_num_rows=mysqli_num_rows($tagResult);
 
         <div class="row auxiDiv">
             <div class="col-md-12">
-                <img src="test.jpg" class="uploadImg">
+                <?php
+                if($fileName){
+                    print ("<img src='../upload/$fileName' class='uploadImg'>");
+                }
+                ?>
+                
             </div>
         </div>
         

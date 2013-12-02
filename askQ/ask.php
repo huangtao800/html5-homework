@@ -19,8 +19,10 @@ if(isset($_POST['submitted'])){
   if(!empty($_FILES['upload']['name'])){
     $allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
     if(in_array($_FILES['upload']['type'], $allowed)){
-      if(move_uploaded_file($_FILES['upload']['tmp_name'], "../upload/{$_FILES['upload']['name']}")){
-        $fileName=$_FILES['upload']['name'];
+      $fileName=$userID."-".$_FILES['upload']['name'];
+      $path="../upload/{$fileName}";
+      if(move_uploaded_file($_FILES['upload']['tmp_name'], iconv("UTF-8", "gb2312", $path))){
+        #$fileName=$_FILES['upload']['name'];
         $insertString="INSERT INTO question(title,description,userID,coin,time,fileName) VALUES ('$title','$description','$userID','$coin','$time','$fileName')";
       }
     }else{
