@@ -7,7 +7,7 @@ function getUserNameByID($db,$userID){
 	return $row['name'];
 }
 
-function printQuestion($questionID,$title,$answerCount,$userName){
+function printQuestion($questionID,$title,$answerCount,$userName,$tagList){
 	print ("<div class='row rowTD'>
           <div class='col-md-12'>
             <div class='questionItem'>
@@ -18,11 +18,13 @@ function printQuestion($questionID,$title,$answerCount,$userName){
                   <div><small>Answers</small></div>
                 </td>
                 <td class='questionTD'>
-                  <a href='../askQ/question.php?questionID=$questionID'><h4>$title</h4></a>
-                  <span class='label label-info labelTag'><a href='#' class='tagLink'>C++</a></span>
-                  <span class='label label-info labelTag'><a href='#' class='tagLink'>Java</a></span>
-                  <span class='label label-info labelTag'><a href='#' class='tagLink'>PHP</a></span>
-                </td>
+                  <a href='../askQ/question.php?questionID=$questionID'><h4>$title</h4></a>");
+for($i=0;$i<count($tagList);$i++){
+  $currentTag=$tagList[$i];
+  print ("<span class='label label-info labelTag'><a href='../askQ/result.php?tag=$currentTag' class='tagLink'>$currentTag</a></span>");
+}
+
+print("</td>
                 <td class='userTD'>
                   $userName
                 </td>
@@ -31,6 +33,7 @@ function printQuestion($questionID,$title,$answerCount,$userName){
             </div><!--questionItem ends-->
           </div>
         </div>");
+                  
 }
 
 function printUser($userID,$userName,$answerCount,$questionCount,$userInfo){

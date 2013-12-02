@@ -93,8 +93,9 @@ if(isset($_GET['keywords'])){
             $title=$row['title'];
             $answerCount=$row['answerCount'];
             $userID=$row['userID'];
-            $userName=getUserNameByID($db,$userID); 
-            printQuestion($questionID,$title,$answerCount,$userName);
+            $userName=getUserNameByID($db,$userID);
+            $tagList=getTagListByQuestionID($db,$questionID); 
+            printQuestion($questionID,$title,$answerCount,$userName,$tagList);
             $row=mysqli_fetch_assoc($result);           
           }
         }else if(isset($_GET['tag'])){
@@ -109,7 +110,8 @@ if(isset($_GET['keywords'])){
             $answerCount=$currentQuestion['answerCount'];
             $userID=$currentQuestion['userID'];
             $userName=getUserNameByID($db,$userID);
-            printQuestion($questionID,$title,$answerCount,$userName);
+            $tagList=getTagListByQuestionID($db,$questionID);
+            printQuestion($questionID,$title,$answerCount,$userName,$tagList);
 
             $tagRow=mysqli_fetch_assoc($tagResult);
           }
@@ -120,6 +122,27 @@ if(isset($_GET['keywords'])){
           $result=mysqli_query($db,$query);
           $row=mysqli_fetch_assoc($result);
           return $row;
+        }
+
+        function getTagListByQuestionID($db,$questionID){
+          $query="SELECT * FROM questiontag where questionID='$questionID'";
+
+          $result=mysqli_query($db,$query);
+          $num_rows=0;
+          $tagList=array();
+          if($result){
+            $num_rows=mysqli_num_rows($result);
+            $row=mysqli_fetch_assoc($result);
+            for($i=0;$i<$num_rows;$i++){
+              $currentTag=$row['tag'];
+              $tagList[$i]=$currentTag;
+
+              $row=mysqli_fetch_assoc($result);
+            }            
+          }
+          
+
+          return $tagList;
         }
         ?>
       </div><!--resultList ends-->
