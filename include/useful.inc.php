@@ -7,6 +7,13 @@ function getUserNameByID($db,$userID){
 	return $row['name'];
 }
 
+function getUserByID($db,$userID){
+  $query="SELECT * from user where id='$userID'";
+  $result=mysqli_query($db,$query);
+  $row=mysqli_fetch_assoc($result);
+  return $row;  
+}
+
 function printQuestion($questionID,$title,$answerCount,$userName,$tagList){
 	print ("<div class='row rowTD'>
           <div class='col-md-12'>

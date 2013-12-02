@@ -66,3 +66,7 @@ body{
 .radioDiv{
 	width: 20px;
 }
+
+.warn{
+	color: red;
+}

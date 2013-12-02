@@ -1,9 +1,11 @@
 <?php
 session_start();
 require_once('../include/mysql_connect.php');
+require_once('../include/useful.inc.php');
 if(!isset($_SESSION['id'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
 }
+$isCoinOut=false;
 if(isset($_POST['submitted'])){
   $userID=$_SESSION['id'];
   $title=$_POST['title'];
@@ -14,41 +16,47 @@ if(isset($_POST['submitted'])){
   $coin=$_POST['coin'];
   $time=date('Y-m-d H:i:s');
 
-  
-  $insertString="";
-  if(!empty($_FILES['upload']['name'])){
-    $allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
-    if(in_array($_FILES['upload']['type'], $allowed)){
-      $fileName=$userID."-".$_FILES['upload']['name'];
-      $path="../upload/{$fileName}";
-      if(move_uploaded_file($_FILES['upload']['tmp_name'], iconv("UTF-8", "gb2312", $path))){
-        #$fileName=$_FILES['upload']['name'];
-        $insertString="INSERT INTO question(title,description,userID,coin,time,fileName) VALUES ('$title','$description','$userID','$coin','$time','$fileName')";
+  $user=getUserByID($db,$userID);
+  $ownCoin=$user['coin'];
+  $isCoinOut=($coin>$ownCoin);
+
+  if(!$isCoinOut){
+      $insertString="";
+      if(!empty($_FILES['upload']['name'])){
+        $allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
+        if(in_array($_FILES['upload']['type'], $allowed)){
+          $fileName=$userID."-".$_FILES['upload']['name'];
+          $path="../upload/{$fileName}";
+          if(move_uploaded_file($_FILES['upload']['tmp_name'], iconv("UTF-8", "gb2312", $path))){
+            #$fileName=$_FILES['upload']['name'];
+            $insertString="INSERT INTO question(title,description,userID,coin,time,fileName) VALUES ('$title','$description','$userID','$coin','$time','$fileName')";
+          }
+        }else{
+          echo "Please upload a JPEG or PNG image";
+        }
+      }else{
+        $insertString="INSERT INTO question(title,description,userID,coin,time) VALUES ('$title','$description','$userID','$coin','$time')";
       }
-    }else{
-      echo "Please upload a JPEG or PNG image";
-    }
-  }else{
-    $insertString="INSERT INTO question(title,description,userID,coin,time) VALUES ('$title','$description','$userID','$coin','$time')";
+
+      
+      mysqli_query($db,$insertString);
+      $questionID=mysqli_insert_id($db);
+      //print $questionID;
+      if($questionID!=0){
+        $insertTag="INSERT INTO questiontag(questionID,tag) VALUES ('$questionID'";
+        for ($i=0;$i<count($tag_arr)-1;$i++) {
+          $currentTag=$tag_arr[$i];
+          $insertTag=$insertTag.",'$currentTag'";
+        }
+        $currentTag=$tag_arr[$i];
+        $insertTag=$insertTag.",'$currentTag')";
+        print($insertTag);
+        mysqli_query($db,$insertTag);
+        header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
+      }
+    }   
   }
 
-  
-  mysqli_query($db,$insertString);
-  $questionID=mysqli_insert_id($db);
-  //print $questionID;
-  if($questionID!=0){
-    $insertTag="INSERT INTO questiontag(questionID,tag) VALUES ('$questionID'";
-    for ($i=0;$i<count($tag_arr)-1;$i++) {
-      $currentTag=$tag_arr[$i];
-      $insertTag=$insertTag.",'$currentTag'";
-    }
-    $currentTag=$tag_arr[$i];
-    $insertTag=$insertTag.",'$currentTag')";
-    print($insertTag);
-    mysqli_query($db,$insertTag);
-    header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
-  }
-}
 
 ?>
 <!DOCTYPE html>
@@ -158,6 +166,7 @@ if(isset($_POST['submitted'])){
                         <option value="15">15</option>
                         <option value="20">20</option>
             </select>
+            <?php if($isCoinOut) print "<P class='warn'>抱歉，您的分值不够！</p>"?>
           </div>
         </div>
 
