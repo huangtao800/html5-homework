@@ -78,4 +78,5 @@ function printUser($userID,$userName,$answerCount,$questionCount,$userInfo){
               </div>
             </div>");
 }
+
 ?>
