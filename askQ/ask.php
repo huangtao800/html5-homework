@@ -50,14 +50,18 @@ if(isset($_POST['submitted'])){
         }
         $currentTag=$tag_arr[$i];
         $insertTag=$insertTag.",'$currentTag')";
-        print($insertTag);
+        
         mysqli_query($db,$insertTag);
+        addQuestionCount($db,$userID);
         header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
       }
     }   
   }
 
-
+function addQuestionCount($db,$userID){
+  $query="UPDATE user set questionCount=questionCount+1 where id='$userID'";
+  $result=mysqli_query($db,$query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

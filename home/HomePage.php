@@ -100,8 +100,8 @@ if(isset($_GET['id'])){
 
       <div class="navBar">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="../home/HomePage.html">Questions</a></li>
-          <li><a href="../home/HomePage_Answer.html">Answers</a></li>
+          <li class="active"><a href="../home/HomePage.php">Questions</a></li>
+          <li><a href="../home/HomePage_Answer.php">Answers</a></li>
         </ul> 
     
       </div><!--navbar ends--> 
