@@ -117,7 +117,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
 
                     <div class='row centerDiv'>
                         
-                            <button type='button' class='btn btn-default tipsLeft noBorderBtn' data-toggle='tooltip' data-placement='bottom' title="" data-original-title='I don\'t think so...' ><span class='glyphicon glyphicon-chevron-down'></span></button>
+                            <button type='button' class='btn btn-default tipsLeft noBorderBtn' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='I don\'t think so...' ><span class='glyphicon glyphicon-chevron-down'></span></button>
                         
                     </div>
                 </div>
@@ -142,7 +142,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
                 </div>
             </div>
 
-        </div>")
+        </div>");
         }
         ?>
         
