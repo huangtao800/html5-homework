@@ -14,7 +14,7 @@ if($num_rows>0){
     $description=$row['description'];
     $userID=$row['userID'];
     $askUserName=getUserNameByID($db,$userID);
-    $time=date('Y-m-d H:i:s');
+    $time=$row['time'];
     $fileName=$row['fileName'];
 }else{
     header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
@@ -97,6 +97,24 @@ $tag_num_rows=mysqli_num_rows($tagResult);
         </div>
 
         <?php
+        $answerQuery="SELECT * FROM answer where questionID='$questionID'";
+        $answerResult=mysqli_query($db,$answerQuery);
+        $answer_num_rows=mysqli_num_rows($answerResult);
+
+        $answerRow=mysqli_fetch_assoc($answerResult);
+        if($answer_num_rows>0){
+            for($i=0;$i<$answer_num_rows;$i++){
+                $userID=$answerRow['userID'];
+                $userName=getUserNameByID($db,$userID);
+                $time=$answerRow['time'];
+                $answerContent=$answerRow['content'];
+                $supportCount=$answerRow['supportCount'];
+                printAnswer($userName,$time,$answerContent,$supportCount);
+
+                $answerRow=mysqli_fetch_assoc($answerResult);
+            }
+        }
+
         function printAnswer($userName,$time,$answerContent,$supportCount){
             print ("
         <div class='answerItemDiv'>
@@ -146,93 +164,9 @@ $tag_num_rows=mysqli_num_rows($tagResult);
         }
         ?>
         
-        <div class="answerItemDiv">
-            <div class="row">
-                <div class="col-md-1">
-                    <div class="row centerDiv">
-                        <div class="col-md-12">
-                            <button type="button" class="noBorderBtn btn btn-default tipsLeft" data-toggle="tooltip" data-placement="top" title="" data-original-title="Useful answer!" ><span class="glyphicon glyphicon-chevron-up"></span></button>
-                        </div>
-                        
-                    </div>
-
-                    <div class="row centerDiv">
-                        <div class="col-md-12">
-                            <span calss="score cneterTD">5</span>
-                        </div>
-                    </div>
-
-                    <div class="row centerDiv">
-                        
-                            <button type="button" class="btn btn-default tipsLeft noBorderBtn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="I don't think so..." ><span class="glyphicon glyphicon-chevron-down"></span></button>
-                        
-                    </div>
-                </div>
-
-
-                <div class="col-md-11">
-                    <div class="answerContent">
-                        <p>asdfjkajsdfj asdfasdf e</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                    <div class="peopleDiv">
-                        <img src="../home/userLogo.png" >
-                        huatao
-                    </div>
-                    
-                </div>
-            </div>
-
-        </div><!--end answerDiv-->
         
-        <div class="answerItemDiv">
-            <div class="row">
-                <div class="col-md-1">
-                    <div class="row centerDiv">
-                        <div class="col-md-12">
-                            <button type="button" class="btn btn-default tipsLeft noBorderBtn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Useful answer!" ><span class="glyphicon glyphicon-chevron-up"></span></button>
-                        </div>
-                        
-                    </div>
-
-                    <div class="row centerDiv">
-                        <div class="col-md-12">
-                            <span calss="score cneterTD">5</span>
-                        </div>
-                    </div>
-
-                    <div class="row centerDiv">
-                        
-                            <button type="button" class="btn btn-default tipsLeft noBorderBtn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="I don't think so." ><span class="glyphicon glyphicon-chevron-down"></span></button>
-                        
-                    </div>
-                </div>
-
-
-                <div class="col-md-11">
-                    <div class="answerContent">
-                        <p>asdfjkajsdfj asdfasdf e</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-10"></div>
-                <div class="col-md-2">
-                    <div class="peopleDiv">
-                        <img src="../home/userLogo.png" >
-                        huatao
-                    </div>
-                    
-                </div>
-            </div>
-
-        </div><!--end answerDiv-->
+        
+        
 
         <div>
             <h3 class="myFont">Your Answer</h3>

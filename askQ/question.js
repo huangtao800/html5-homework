@@ -50,8 +50,8 @@ function postAnswer(questionID){
   }else{
     var answerForm=$('#answerForm');
     answerForm.attr("action","../include/submitAnswer.php");
-    var answerContentInput=$("<input type='text' name='answerContent' value='"+answerContent+"'>");
-    var questionIDInput=$("<input type='text' name='questionID' value='"+questionID+"'>")
+    var answerContentInput=$("<input type='hidden' name='answerContent' value='"+answerContent+"'>");
+    var questionIDInput=$("<input type='hidden' name='questionID' value='"+questionID+"'>")
     answerForm.append(answerContentInput);
     answerForm.append(questionIDInput);
     answerForm.submit();
