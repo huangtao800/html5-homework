@@ -107,7 +107,7 @@ if(isset($_GET['id'])){
       </div><!--navbar ends--> 
 
       <div class="myAnswer">
-        <h4><b><span id="answerCount"><?php print $questionCount?></span></b> <small>Questions</small></h4>
+        <h4><b><span id="questionCount"><?php print $questionCount?></span></b> <small>Questions</small></h4>
 
         <?php
         require_once('../include/useful.inc.php');

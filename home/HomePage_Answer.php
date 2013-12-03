@@ -46,7 +46,7 @@ if(isset($_SESSION['id'])){
       <div class="navBar">
         <ul class="nav nav-tabs">
           <li class="active"><a href="">Home</a></li>
-          <li><a href="">Edit</a></li>
+          <?php if(!isset($_GET['id'])) print"<li><a href=''>Edit</a></li>"?>
         </ul> 
     
       </div><!--navbar ends-->
@@ -96,76 +96,50 @@ if(isset($_SESSION['id'])){
 
         <?php
         require_once('../include/useful.inc.php');
-        $query="SELECT questionID from questionAnswer where answerUserID='$id'";
+        $query="SELECT questionID from answer where userID='$id'";
         $result=mysqli_query($db,$query);
         $num_rows=mysqli_num_rows($result);
-        $row=mysqli_fetch_assoc($result);
-        for($row_num=0;$row_num<$num_rows;$row_num++){
-          $questionID=$row['questionID'];
-          $query="SELECT * from question where id='$questionID'";
-          $result2=mysqli_query($db,$query);
-          $num_rows2=mysqli_num_rows($result2);
-          $row2=mysqli_fetch_assoc($result2);
-          for($row_num2=0;$row_num2<$num_rows2;$row_num2++){
-            $title=$row2['title'];
-            $answerCount=$row2['answerCount'];
-            $userName=$row2['userName'];
-          }
-
-          printQuestion($title,$answerCount,$userName);
+        if($num_rows>0){
           $row=mysqli_fetch_assoc($result);
+          $questionList=array();
+          $index=0;
+          for($i=0;$i<$num_rows;$i++){
+            $questionID=$row['questionID'];
+
+            $query="SELECT * from question where id='$questionID'";
+            $result2=mysqli_query($db,$query);
+            $num_rows2=mysqli_num_rows($result2);
+
+            if($num_rows2>0){
+              $row2=mysqli_fetch_assoc($result2);
+              for($j=0;$j<$num_rows2;$j++){
+                $title=$row2['title'];
+                $answerCount=$row2['answerCount'];
+                $userID=$row2['userID'];
+                $userName=getUserNameByID($db,$userID);
+                $tagList=getTagListByQuestionID($db,$questionID);
+
+                if(!in_array($questionID, $questionList)){
+                  printQuestion($questionID,$title,$answerCount,$userName,$tagList);
+                  $questionList[$index]=$questionID;
+                  $index++;
+                }
+                
+                $row2=mysqli_fetch_assoc($result2);
+              }              
+            }
+
+            $row=mysqli_fetch_assoc($result);
+          }          
         }
 
 
 
-        ?>
-        <div class="row rowTD">
-          <div class="col-md-12">
-            <div class="questionItem">
-            <table>
-              <tr>
-                <td class="answerCountTD">
-                  <div class="answerCount">5</div>
-                  <div><small>Answers</small></div>
-                </td>
-                <td class="questionTD">
-                  <a href=""><h4>java 如何拖动窗体？</h4></a>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-                </td>
-                <td class="userTD">
-                  huangtao
-                </td>
-              </tr>
-            </table> 
-            </div><!--questionItem ends-->
-          </div>
-        </div>
 
-        <div class="row rowTD">
-          <div class="col-md-12">
-            <div class="questionItem">
-            <table>
-              <tr>
-                <td class="answerCountTD">
-                  <div class="answerCount">5</div>
-                  <div><small>Answers</small></div>
-                </td>
-                <td class="questionTD">
-                  <a href=""><h4>java 如何拖动窗体？</h4></a>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                  <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-                </td>
-                <td class="userTD">
-                  huangtao
-                </td>
-              </tr>
-            </table> 
-            </div><!--questionItem ends-->
-          </div>
-        </div>        
+        ?>
+        
+
+              
       </div>
 
     </div>
