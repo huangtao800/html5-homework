@@ -35,12 +35,25 @@ $('#editor').wysiwyg();
     window.prettyPrint && prettyPrint();
   });
 
-function postAnswer(){
+function postAnswer(questionID){
   var answerContent=$('#editor').text();
   if(answerContent==""){
     var warn=$('.yourAnswerDiv .warn');
-    alert(warn.length);
+
+    if(warn.length==0){
+      var yourAnswerDiv=$('.yourAnswerDiv');
+      var warnElement=document.createElement("label");
+      warnElement.setAttribute("class","warn myFont");
+      warnElement.innerText="输入内容不能为空！";
+      yourAnswerDiv.append(warnElement);
+    }
   }else{
-    alert(answerContent);
+    var answerForm=$('#answerForm');
+    answerForm.attr("action","../include/submitAnswer.php");
+    var answerContentInput=$("<input type='text' name='answerContent' value='"+answerContent+"'>");
+    var questionIDInput=$("<input type='text' name='questionID' value='"+questionID+"'>")
+    answerForm.append(answerContentInput);
+    answerForm.append(questionIDInput);
+    answerForm.submit();
   }
 }
