@@ -1,5 +1,6 @@
 <?php
 require_once("../include/mysql_connect.php");
+require_once("../include/useful.inc.php");
 if(!isset($_GET['keywords'])&&!isset($_GET['tag'])){
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/index.php');
 }
@@ -124,26 +125,7 @@ if(isset($_GET['keywords'])){
           return $row;
         }
 
-        function getTagListByQuestionID($db,$questionID){
-          $query="SELECT * FROM questiontag where questionID='$questionID'";
-
-          $result=mysqli_query($db,$query);
-          $num_rows=0;
-          $tagList=array();
-          if($result){
-            $num_rows=mysqli_num_rows($result);
-            $row=mysqli_fetch_assoc($result);
-            for($i=0;$i<$num_rows;$i++){
-              $currentTag=$row['tag'];
-              $tagList[$i]=$currentTag;
-
-              $row=mysqli_fetch_assoc($result);
-            }            
-          }
-          
-
-          return $tagList;
-        }
+        
         ?>
       </div><!--resultList ends-->
       

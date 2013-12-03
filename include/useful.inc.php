@@ -79,4 +79,24 @@ function printUser($userID,$userName,$answerCount,$questionCount,$userInfo){
             </div>");
 }
 
+function getTagListByQuestionID($db,$questionID){
+          $query="SELECT * FROM questiontag where questionID='$questionID'";
+
+          $result=mysqli_query($db,$query);
+          $num_rows=0;
+          $tagList=array();
+          if($result){
+            $num_rows=mysqli_num_rows($result);
+            $row=mysqli_fetch_assoc($result);
+            for($i=0;$i<$num_rows;$i++){
+              $currentTag=$row['tag'];
+              $tagList[$i]=$currentTag;
+
+              $row=mysqli_fetch_assoc($result);
+            }            
+          }
+          
+
+          return $tagList;
+}
 ?>

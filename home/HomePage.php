@@ -121,8 +121,8 @@ if(isset($_GET['id'])){
           $answerCount=$row['answerCount'];
           $userID=$row['userID'];
           $userName=getUserNameByID($db,$userID);
-
-          printQuestion($questionID,$title,$answerCount,$userName);
+          $tagList=getTagListByQuestionID($db,$questionID);
+          printQuestion($questionID,$title,$answerCount,$userName,$tagList);
           $row=mysqli_fetch_assoc($result);
         }
 
