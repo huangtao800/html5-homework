@@ -34,3 +34,13 @@ $('#editor').wysiwyg();
     $('#editor').wysiwyg();
     window.prettyPrint && prettyPrint();
   });
+
+function postAnswer(){
+  var answerContent=$('#editor').text();
+  if(answerContent==""){
+    var warn=$('.yourAnswerDiv .warn');
+    alert(warn.length);
+  }else{
+    alert(answerContent);
+  }
+}

@@ -237,7 +237,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
         <div>
             <h3 class="myFont">Your Answer</h3>
             <div class="yourAnswerDiv">
-                <form action= method="post">
+                <form>
                     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
                         <div class="btn-group">
                             <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
@@ -256,8 +256,9 @@ $tag_num_rows=mysqli_num_rows($tagResult);
                         </div>
                     </div>
                     <div id="editor" name="answerContent"></div>                    
-                    <button type="submit" class="btn btn-lg btn-primary">Submit your answer</button>
+                    
                 </form>
+                <button class="btn btn-lg btn-primary" onclick="postAnswer()">Submit your answer</button>
             </div>
         </div>
 
