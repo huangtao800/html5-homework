@@ -51,9 +51,11 @@ function postAnswer(questionID){
     var answerForm=$('#answerForm');
     answerForm.attr("action","../include/submitAnswer.php");
     var answerContentInput=$("<input type='hidden' name='answerContent' value='"+answerContent+"'>");
-    var questionIDInput=$("<input type='hidden' name='questionID' value='"+questionID+"'>")
+    var questionIDInput=$("<input type='hidden' name='questionID' value='"+questionID+"'>");
     answerForm.append(answerContentInput);
     answerForm.append(questionIDInput);
+    
+
     answerForm.submit();
   }
 }

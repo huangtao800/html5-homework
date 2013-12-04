@@ -122,11 +122,38 @@ if(isset($_GET['id'])){
           $userID=$row['userID'];
           $userName=getUserNameByID($db,$userID);
           $tagList=getTagListByQuestionID($db,$questionID);
-          printQuestion($questionID,$title,$answerCount,$userName,$tagList);
+          printHomeQuestion($questionID,$title,$answerCount,$userName,$tagList);
           $row=mysqli_fetch_assoc($result);
         }
 
+function printHomeQuestion($questionID,$title,$answerCount,$userName,$tagList){
+  print ("<div class='row rowTD'>
+          <div class='col-md-12'>
+            <div class='questionItem'>
+            <table>
+              <tr>
+                <td class='answerCountTD'>
+                  <div class='answerCount'>$answerCount</div>
+                  <div><small>Answers</small></div>
+                </td>
+                <td class='questionTD'>
+                  <a href='../askQ/myUnanswered.php?questionID=$questionID'><h4>$title</h4></a>");
+for($i=0;$i<count($tagList);$i++){
+  $currentTag=$tagList[$i];
+  print ("<span class='label label-info labelTag'><a href='../askQ/result.php?tag=$currentTag' class='tagLink'>$currentTag</a></span>");
+}
 
+print("</td>
+                <td class='userTD'>
+                  $userName
+                </td>
+              </tr>
+            </table> 
+            </div><!--questionItem ends-->
+          </div>
+        </div>");
+                  
+}
         ?>
 
         

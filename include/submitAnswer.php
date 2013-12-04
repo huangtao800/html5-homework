@@ -2,9 +2,9 @@
 session_start();
 require_once("mysql_connect.php");
 if(!isset($_SESSION['id'])){
+
 	header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
-}
-if(isset($_POST['submitted'])){
+}else if(isset($_POST['submitted'])){
 	$answerContent=$_POST['answerContent'];
 	$userID=$_SESSION['id'];
 	$questionID=$_POST['questionID'];
@@ -12,6 +12,7 @@ if(isset($_POST['submitted'])){
 	$query="INSERT INTO answer(questionID,content,userID,time) VALUES ('$questionID','$answerContent','$userID','$time')";
 	mysqli_query($db,$query);
 	addAnswerCount($db,$userID);
+	addAnswerCountInQuestion($db,$questionID);
 	header('Location: http://'. $_SERVER['HTTP_HOST'] ."/askQ/question.php?questionID=$questionID");
 }
 
@@ -19,5 +20,10 @@ function addAnswerCount($db,$userID){
   $query="UPDATE user set answerCount=answerCount+1 where id='$userID'";
   $result=mysqli_query($db,$query);
 
+}
+
+function addAnswerCountInQuestion($db,$questionID){
+	$query="UPDATE question set answerCount=answerCount+1 where id='$questionID'";
+	mysqli_query($db,$query);
 }
 ?>
