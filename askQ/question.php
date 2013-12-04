@@ -42,6 +42,28 @@ $tag_num_rows=mysqli_num_rows($tagResult);
     <link rel="stylesheet" href="../askQ/question.css">
     <link href="../Font-Awesome-3.0.2/css/font-awesome.css" rel="stylesheet">
     
+    <script type="text/javascript">
+    function support(questionID,answerID,answerUserID,questionUserID,supportCount){
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+          {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+          }
+        else
+          {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+          }
+          xmlhttp.onreadystatechange=function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                var result=xmlhttp.responseText;
+                
+                document.getElementById(answerID).innerHTML=result;
+            }
+          }
+          xmlhttp.open("GET","../include/support.php?support="+supportCount+"&answerID="+answerID+"&questionID="+questionID+"&questionUserID="+questionUserID+"&answerUserID="+answerUserID,true);
+          xmlhttp.send();
+    }
+    </script>
     
 </head>
 
@@ -104,38 +126,40 @@ $tag_num_rows=mysqli_num_rows($tagResult);
         $answerRow=mysqli_fetch_assoc($answerResult);
         if($answer_num_rows>0){
             for($i=0;$i<$answer_num_rows;$i++){
-                $userID=$answerRow['userID'];
-                $userName=getUserNameByID($db,$userID);
+                $answerUserID=$answerRow['userID'];
+                $userName=getUserNameByID($db,$answerUserID);
                 $time=$answerRow['time'];
                 $answerContent=$answerRow['content'];
                 $supportCount=$answerRow['supportCount'];
-                printAnswer($userName,$time,$answerContent,$supportCount);
+                $answerID=$answerRow['id'];
+                
+                printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$userID);
 
                 $answerRow=mysqli_fetch_assoc($answerResult);
             }
         }
 
-        function printAnswer($userName,$time,$answerContent,$supportCount){
+        function printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$questionUserID){
             print ("
         <div class='answerItemDiv'>
             <div class='row'>
                 <div class='col-md-1'>
                     <div class='row centerDiv'>
                         <div class='col-md-12'>
-                            <button type='button' class='noBorderBtn btn btn-default tipsLeft' data-toggle='tooltip' data-placement='top' title='' data-original-title='Useful answer!' ><span class='glyphicon glyphicon-chevron-up'></span></button>
+                            <button onclick='support($questionID,$answerID,$answerUserID,$questionUserID,1)' type='button' class='noBorderBtn btn btn-default tipsLeft' data-toggle='tooltip' data-placement='top' title='' data-original-title='Useful answer!' ><span class='glyphicon glyphicon-chevron-up'></span></button>
                         </div>
                         
                     </div>
 
                     <div class='row centerDiv'>
                         <div class='col-md-12'>
-                            <span calss='score cneterTD'>$supportCount</span>
+                            <span class='score cneterTD' id=$answerID>$supportCount</span>
                         </div>
                     </div>
 
                     <div class='row centerDiv'>
                         
-                            <button type='button' class='btn btn-default tipsLeft noBorderBtn' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='I don\'t think so...' ><span class='glyphicon glyphicon-chevron-down'></span></button>
+                            <button onclick='support($questionID,$answerID,$answerUserID,$questionUserID,-1)' type='button' class='btn btn-default tipsLeft noBorderBtn' data-toggle='tooltip' data-placement='bottom' title='' data-original-title='I don\"t think so...' ><span class='glyphicon glyphicon-chevron-down'></span></button>
                         
                     </div>
                 </div>
