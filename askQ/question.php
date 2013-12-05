@@ -196,7 +196,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
                 <div class='col-md-11'>
                     <div class='answerContent'>
                         <p>$answerContent</p>");
-if($fileName){print "<p><img src='../answer/$fileName'></p>";}
+if($answerFileName){print "<p><img src='../answer/$answerFileName'></p>";}
 print (
                     "</div>
                 </div>
@@ -238,7 +238,7 @@ print (
 
                         <div class="btn-group">
                             <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-                            <input name="upload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                            <input id="answerImage" name="upload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
                         </div>
 
                         <div class="btn-group">
