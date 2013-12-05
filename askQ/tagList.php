@@ -72,26 +72,26 @@
       <div class="row tagList">
         <div class="col-md-3">
           <div class="tagTD tagDescription">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=C++" class="tagLink">C++</a></span>
             <small><span>×3456</span></small>
             <p><small>C++ is a widely-used, statically-typed, free-form, compiled, multi-paradigm, multi-level, imperative, general-purpose, object-oriented programming language based on C.</small></p> 
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD tagDescription">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">HTML</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=HTML" class="tagLink">HTML</a></span>
             <p><small>HTML (HyperText Markup Language) is the principal markup language used for structuring web pages and formatting content. The most recent iteration of HTML is HTML5.</small></p>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD tagDescription">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Java" class="tagLink">Java</a></span>
             <p><small>Java (not to be confused with JavaScript) is a class-based, object-oriented, strongly typed, reflective language and runtime environment (JRE). Java programs are compiled to bytecode and run in a virtual machine (JVM) enabling a "write once, run anywhere" (WORA) methodology.</small></p>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD tagDescription">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Javasript</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Javascript" class="tagLink">Javasript</a></span>
           </div>
         </div>
       </div><!--end row-->
@@ -99,23 +99,23 @@
       <div class="row tagList">
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">C</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=C" class="tagLink">C</a></span>
             <p><small>A programming language</small></p> 
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=PHP" class="tagLink">PHP</a></span>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Mysql" class="tagLink">Mysql</a></span>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Mysql</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=C#" class="tagLink">C#</a></span>
           </div>
         </div>
       </div><!--end row-->
@@ -123,22 +123,22 @@
       <div class="row tagList">
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Python</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Python" class="tagLink">Python</a></span>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Ruby</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Ruby" class="tagLink">Ruby</a></span>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">Rail</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=Rail" class="tagLink">Rail</a></span>
           </div>
         </div>
         <div class="col-md-3">
           <div class="tagTD">
-            <span class="label label-info labelTag"><a href="#" class="tagLink">VB</a></span>
+            <span class="label label-info labelTag"><a href="result.php?tag=VB" class="tagLink">VB</a></span>
           </div>
         </div>
       </div><!--end row-->

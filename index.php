@@ -60,7 +60,7 @@ if(isset($_SESSION['id'])){
   <div class="row">
     <div class="col-md-12">
       <ul class="nav nav-tabs">
-        <li><a href="askQ/tagList.html">Tags</a></li>
+        <li><a href="askQ/tagList.php">Tags</a></li>
         <li><a href="">Unanswered</a></li>
         <li><a href="askQ/ask.php">I want to Ask</a></li>
       </ul>
