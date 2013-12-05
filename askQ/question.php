@@ -132,8 +132,9 @@ $tag_num_rows=mysqli_num_rows($tagResult);
             $answerContent=$answerRow['content'];
             $supportCount=$answerRow['supportCount'];
             $answerID=$answerRow['id'];
+            $answerFileName=$answerRow['fileName'];
 
-            printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$userID);
+            printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$userID,$answerFileName);
 
         }
 
@@ -155,9 +156,10 @@ $tag_num_rows=mysqli_num_rows($tagResult);
                 $answerContent=$answerRow['content'];
                 $supportCount=$answerRow['supportCount'];
                 $answerID=$answerRow['id'];
+                $answerFileName=$answerRow['fileName'];
 
                 if($answerID!=$selectedAnswerID){
-                    printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$userID);
+                    printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$userID,$answerFileName);
                 }
                 
 
@@ -165,7 +167,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
             }
         }
 
-        function printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$questionUserID){
+        function printAnswer($questionID,$answerUserID,$userName,$time,$answerContent,$supportCount,$answerID,$questionUserID,$answerFileName){
             print ("
         <div class='answerItemDiv'>
             <div class='row'>
@@ -193,8 +195,10 @@ $tag_num_rows=mysqli_num_rows($tagResult);
 
                 <div class='col-md-11'>
                     <div class='answerContent'>
-                        <p>$answerContent</p>
-                    </div>
+                        <p>$answerContent</p>");
+if($fileName){print "<p><img src='../answer/$fileName'></p>";}
+print (
+                    "</div>
                 </div>
             </div>
 
@@ -234,7 +238,7 @@ $tag_num_rows=mysqli_num_rows($tagResult);
 
                         <div class="btn-group">
                             <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-                            <input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                            <input name="upload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
                         </div>
 
                         <div class="btn-group">

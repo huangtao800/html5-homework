@@ -1,4 +1,6 @@
 <?php
+
+require_once('include/useful.inc.php');
 if(isset($_GET['submitted'])){
   if($_GET['iCheck']==0){
     $keywords=$_GET['keywords']; 
@@ -36,6 +38,7 @@ if(isset($_SESSION['id'])){
 <link rel="stylesheet" href="home/home.css">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="iCheck/skins/square/blue.css">
+<link rel="stylesheet" type="text/css" href="askQ/result.css">
 <link rel="stylesheet" href="askQ/search.css">
 
 
@@ -103,80 +106,8 @@ if(isset($_SESSION['id'])){
 
   <div class="hotQuestion">
     <h3 class="myFont">Top Questions</h3>
-      <div class="hotQuestionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href="askQ/question.html"><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                
-              </td>
-            </tr>
-          </table>  
-      </div><!--hotQuestionItem ends-->
-
-      <div class="hotQuestionItem">
-          <table valign="middle">
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href="askQ/question.html"><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-          </table>  
-      </div><!--hotQuestionItem ends-->
-
-      <div class="hotQuestionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href="askQ/question.html"><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-              <td class="userTD">
-                huangtao
-              </td>
-            </tr>
-            </tr>
-          </table>  
-      </div><!--hotQuestionItem ends-->
-
-      <div class="hotQuestionItem">
-          <table>
-            <tr>
-              <td class="answerCountTD">
-                <div class="answerCount">5</div>
-                <div><small>Answers</small></div>
-              </td>
-              <td class="questionTD">
-                <a href=""><h4>java 如何拖动窗体？</h4></a>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">C++</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">Java</a></span>
-                <span class="label label-info labelTag"><a href="#" class="tagLink">PHP</a></span>
-              </td>
-            </tr>
-          </table>  
-      </div><!--hotQuestionItem ends-->      
+    <?php getTopQuestion($db)?>
+  </div>    
    
 </div>
 <!--container end--> 
@@ -189,3 +120,49 @@ if(isset($_SESSION['id'])){
 
 </body>
 </html>
+
+<?php
+require_once("include/useful.inc.php");
+function getTopQuestion($db){
+  $topQuestionQuery="SELECT * FROM question order by time desc, answerCount asc limit 10";
+  $result=mysqli_query($db,$topQuestionQuery);
+  if($result){
+    $num_rows=mysqli_num_rows($result);
+    if($num_rows>0){
+      $row=mysqli_fetch_assoc($result);
+      for($i=0;$i<$num_rows;$i++){
+        $questionID=$row['id'];
+        $tagList=getTagListByQuestionID($db,$questionID);
+        $answerCount=$row['answerCount'];
+        $title=$row['title'];
+        $userID=$row['userID'];
+        $userName=getUserNameByID($db,$userID);
+        printQuestion($questionID,$title,$answerCount,$userName,$tagList);
+        $row=mysqli_fetch_assoc($result);
+      }
+    }
+  }
+}
+
+
+function printHotQuestion($answerCount,$questionID,$title,$tagList){
+  print("      <div class='hotQuestionItem'>
+          <table>
+            <tr>
+              <td class='answerCountTD'>
+                <div class='answerCount'>$answerCount</div>
+                <div><small>Answers</small></div>
+              </td>
+              <td class='questionTD'>
+                <a href='askQ/question.php?questionID=$questionID'><h4>$title</h4></a>");
+  for($i=0;$i<count($tagList);$i++){
+    $currentTag=$tagList[$i];
+    print ("<span class='label label-info labelTag'><a href='' class='tagLink'>$currentTag</a></span>");
+  }
+  print(
+              "</td>
+            </tr>
+          </table>  
+      </div>");
+}
+?>
