@@ -228,7 +228,7 @@ print (
         <div>
             <h3 class="myFont">Your Answer</h3>
             <div class="yourAnswerDiv">
-                <form id="answerForm" method="post">
+                <form id="answerForm" name="answerForm" method="post" enctype="multipart/form-data">
                     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
                         <div class="btn-group">
                             <a class="btn dropdown-toggle" data-toggle="dropdown" title="Font"><i class="icon-font"></i><b class="caret"></b></a>
@@ -238,7 +238,7 @@ print (
 
                         <div class="btn-group">
                             <a class="btn" title="Insert picture (or just drag & drop)" id="pictureBtn"><i class="icon-picture"></i></a>
-                            <input id="answerImage" name="upload" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
+                            <input id="answerImage" type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" />
                         </div>
 
                         <div class="btn-group">
@@ -248,8 +248,9 @@ print (
                     </div>
                     <div id="editor" name="answerContent"></div>                    
                     <input type="hidden" name="submitted" value="true">
+                    <input type="file" name="upload">
                 </form>
-                <button class="btn btn-lg btn-primary" onclick=<?php print"postAnswer($questionID)" ?> >Submit your answer</button>
+                <button class="btn btn-lg btn-primary" style="margin-top: 10px" onclick=<?php print"postAnswer($questionID)" ?> >Submit your answer</button>
             </div>
         </div>
 

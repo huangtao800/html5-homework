@@ -11,7 +11,19 @@ if(!isset($_SESSION['id'])){
 	$time=date('Y-m-d H:i:s');
 	$query="INSERT INTO answer(questionID,content,userID,time) VALUES ('$questionID','$answerContent','$userID','$time')";
 	
-	
+	if(!empty($_FILES['upload']['name'])){
+		$allowed = array('image/pjpeg','image/jpeg','image/JPG','image/X_PNG','image/PNG','image/png','image/x-png');
+        if(in_array($_FILES['upload']['type'], $allowed)){
+          $fileName=$questionID."-".$userID."-".$_FILES['upload']['name'];
+          $path="../answer/{$fileName}";
+          if(move_uploaded_file($_FILES['upload']['tmp_name'], iconv("UTF-8", "gb2312", $path))){
+            #$fileName=$_FILES['upload']['name'];
+            $query="INSERT INTO answer(questionID,content,userID,time,fileName) VALUES ('$questionID','$answerContent','$userID','$time','$fileName')";
+          }
+        }else{
+          echo "Please upload a JPEG or PNG image";
+        }
+	}
 	
 	
 	mysqli_query($db,$query);

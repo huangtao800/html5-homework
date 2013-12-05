@@ -54,7 +54,6 @@ function postAnswer(questionID){
     var questionIDInput=$("<input type='hidden' name='questionID' value='"+questionID+"'>");
     answerForm.append(answerContentInput);
     answerForm.append(questionIDInput);
-    var file=document.getElementById("answerImage").value;
 
     answerForm.submit();
   }
