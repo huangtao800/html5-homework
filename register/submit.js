@@ -10,7 +10,7 @@ function checkPassword(){
 	var p2=document.getElementById("confirmPassword").value;
 	
 	if(p1!=p2){
-		alert(p1+p2);
+		
 		var appendDiv=document.getElementById("appendPassword");
 		
 		var wrongPasswordLabel=document.createElement("label");
