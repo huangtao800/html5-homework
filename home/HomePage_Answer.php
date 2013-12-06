@@ -1,22 +1,23 @@
 <?php
 session_start();
-require_once('../include/mysql_connect.php'); 
-if(isset($_SESSION['id'])){
+require_once('../include/mysql_connect.php');
+if(isset($_GET['id'])){
+  $id=$_GET['id'];
+}else if(isset($_SESSION['id'])){
   $id=$_SESSION['id'];
-  $query="SELECT * from user where id = '$id'";
-  $result=mysqli_query($db,$query);
-  $num_rows=mysqli_num_rows($result);
-  if($num_rows>0){
-    $row=mysqli_fetch_assoc($result);
-    $name=$row['name'];
-    $email=$row['email'];
-    $coin=$row['coin'];
-    $questionCount=$row['questionCount'];
-    $answerCount=$row['answerCount'];
-  }
-
 }else{
   header('Location: http://'. $_SERVER['HTTP_HOST'] .'/login/login.php');
+}
+$query="SELECT * from user where id = '$id'";
+$result=mysqli_query($db,$query);
+$num_rows=mysqli_num_rows($result);
+if($num_rows>0){
+  $row=mysqli_fetch_assoc($result);
+  $name=$row['name'];
+  $email=$row['email'];
+  $coin=$row['coin'];
+  $questionCount=$row['questionCount'];
+  $answerCount=$row['answerCount'];
 }
 ?>
 
@@ -85,8 +86,24 @@ if(isset($_SESSION['id'])){
 
       <div class="navBar">
         <ul class="nav nav-tabs">
-          <li><a href="../home/HomePage.php">Questions</a></li>
-          <li class="active"><a href="../home/HomePage_Answer.html">Answers</a></li>
+          <li>
+            <?php 
+            if(isset($_GET['id'])){
+              print ("<a href='../home/HomePage.php?id=$id'>");
+            }else{
+              print ("<a href='../home/HomePage.php'>");
+            }
+          ?>
+          Questions</a></li>
+          <li class="active">
+            <?php
+            if(isset($_GET['id'])){
+              print ("<a href='../home/HomePage_Answer.php?id=$id'>");
+            }else{
+              print ("<a href='../home/HomePage_Answer.php'>");
+            }            
+            ?>
+            Answers</a></li>
         </ul> 
     
       </div><!--navbar ends--> 

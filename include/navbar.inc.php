@@ -6,7 +6,7 @@
     </div>
     <div class="navbar-collapse collapse myNavBar">
       <ul class="nav navbar-nav">
-        <li><a href="askQ/tagList.php">Tags</a></li>
+        <li><a href="../askQ/tagList.php">Tags</a></li>
       </ul>
       <form class="navbar-form navbar-left" role="search" action="../index.php" method="get">
         <div class="form-group">
