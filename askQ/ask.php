@@ -53,6 +53,7 @@ if(isset($_POST['submitted'])){
         
         mysqli_query($db,$insertTag);
         addQuestionCount($db,$userID);
+        decreaseCoin($db,$userID,$coin);
         header ('Location: http://'. $_SERVER['HTTP_HOST'] .'/askQ/question.php?questionID='."$questionID");
       }
     }   
@@ -60,6 +61,11 @@ if(isset($_POST['submitted'])){
 
 function addQuestionCount($db,$userID){
   $query="UPDATE user set questionCount=questionCount+1 where id='$userID'";
+  $result=mysqli_query($db,$query);
+}
+
+function decreaseCoin($db,$userID,$coin){
+  $query="UPDATE user set coin=coin-$coin where id='$userID'";
   $result=mysqli_query($db,$query);
 }
 ?>

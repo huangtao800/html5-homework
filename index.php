@@ -124,7 +124,11 @@ if(isset($_SESSION['id'])){
 <?php
 require_once("include/useful.inc.php");
 function getTopQuestion($db){
-  $topQuestionQuery="SELECT * FROM question order by time desc, answerCount asc limit 10";
+  $nowtime=date("Y-m-d H:i:s");
+  $beforeTime=date('Y-m-d H:i:s',strtotime("$nowtime-1 month"));
+
+  $topQuestionQuery="SELECT * FROM question where time>'$beforeTime' order by answerCount desc limit 10";
+  
   $result=mysqli_query($db,$topQuestionQuery);
   if($result){
     $num_rows=mysqli_num_rows($result);
